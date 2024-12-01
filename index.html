@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laexify</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .icon-container {
+            position: relative;
+            display: inline-block;
+        }
+        .icon-container .tooltip {
+            visibility: hidden;
+            width: 120px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -60px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.3s, transform 0.3s;
+        }
+        .icon-container .tooltip::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: black transparent transparent transparent;
+        }
+        .icon-container:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .badge {
+            transition: transform 0.3s, opacity 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .badge:hover {
+            transform: scale(1.1);
+            opacity: 0.8;
+        }
+        .bg-blur {
+            background: url(img/bg.gif) no-repeat center center fixed;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            filter: blur(15px);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 flex items-center justify-center h-screen relative">
+    <div class="bg-blur"></div>
+    <main class="text-center fade-in bg-white bg-opacity-80 p-8 rounded-lg shadow-lg w-11/12 lg:w-3/4 xl:w-1/2 h-auto lg:h-[75vh] flex flex-col justify-center relative z-10">
+        <div class="flex flex-col items-center text-center gap-2 md:gap-3">
+            <img alt="pfp.png" src="img/profile.webp" draggable="false" class="rounded-full bg-gradient-to-r to-pink-500 from-blue-500 p-1 hover:opacity-80 duration-300" width="128">
+            <div class="flex items-center">
+                <span class="titleText font-bold text-5xl md:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500">Laexify</span>
+                <div class="flex gap-2 ml-4">
+                    <div class="icon-container badge bg-gradient-to-r from-blue-500 to-pink-500 text-white p-1 rounded-full w-6 h-6">
+                        <i class="fas fa-code text-sm"></i>
+                        <span class="tooltip">Developer</span>
+                    </div>
+                    <div class="icon-container badge bg-gradient-to-r from-green-400 to-blue-500 text-white p-1 rounded-full w-6 h-6">
+                        <i class="fas fa-laptop-code text-sm"></i>
+                        <span class="tooltip">Full Stack</span>
+                    </div>
+                    <div class="icon-container badge bg-gradient-to-r from-purple-500 to-red-500 text-white p-1 rounded-full w-6 h-6">
+                        <i class="fas fa-database text-sm"></i>
+                        <span class="tooltip">Backend Specialist</span>
+                    </div>
+                    <div class="icon-container badge bg-gradient-to-r from-yellow-400 to-red-500 text-white p-1 rounded-full w-6 h-6">
+                        <i class="fas fa-paint-brush text-sm"></i>
+                        <span class="tooltip">Frontend Enthusiast</span>
+                    </div>
+                </div>
+            </div>
+        </div> <br />
+        <div class="flex flex-col items-center text-center space-y-2 md:space-y-3">
+            <span class="text text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500 text-xs md:text-sm">
+                Hello! I'm currently studying Internet and Network Technologies. My primary focus is on Backend development, but I also have a good understanding of Frontend technologies. Below are some of the areas I'm interested in and have experience with.
+            </span>
+        </div>
+        <div class="flex flex-row items-end justify-center my-3 md:my-5 gap-1 md:gap-2">
+            <a class="select-none duration-500 ease-out hover:-translate-y-2" href="https://github.com/thislaex">
+                <img src="img/github-original.svg" alt="GitHub" width="42" class="select-none hover:scale-110 hover:opacity-75 transition-transform duration-300">
+            </a>
+            <a class="select-none duration-500 ease-out hover:-translate-y-2" href="https://instagram.com/Laexify">
+                <img src="img/instagram_logo.svg" alt="Instagram" width="42" class="select-none hover:scale-110 hover:opacity-75 transition-transform duration-300">
+            </a>
+        </div>
+        <div class="flex flex-wrap justify-center gap-4 p-4 bg-white bg-opacity-10 rounded-md">
+            <div class="icon-container">
+                <img src="img/bootstrap-plain.svg" alt="Bootstrap" class="w-12 h-12 hover:scale-110 hover:opacity-75 transition-transform duration-300">
+                <span class="tooltip">Bootstrap</span>
+            </div>
+            <div class="icon-container">
+                <img src="img/react-original.svg" alt="React" class="w-12 h-12 hover:scale-110 hover:opacity-75 transition-transform duration-300">
+                <span class="tooltip">React</span>
+            </div>
+            <div class="icon-container">
+                <img src="img/javascript-original.svg" alt="JavaScript" class="w-12 h-12 hover:scale-110 hover:opacity-75 transition-transform duration-300">
+                <span class="tooltip">JavaScript</span>
+            </div>
+            <div class="icon-container">
+                <img src="img/androidstudio-original.svg" alt="Android Studio" class="w-12 h-12 hover:scale-110 hover:opacity-75 transition-transform duration-300">
+                <span class="tooltip">Android Studio</span>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
