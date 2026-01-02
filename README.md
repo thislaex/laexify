@@ -1,6 +1,6 @@
 # Önizleme
 
-<img src="https://laexify.me/img/ss.png">
+<img src="https://imgur.com/a/Tp6t9LW">
 
 ## Düzenleme
 
