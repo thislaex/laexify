@@ -3,76 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laexify</title>
+    <meta name="description" content="Laexify - Full Stack Developer specializing in Backend development, Internet and Network Technologies student with expertise in modern web technologies.">
+    <meta name="keywords" content="Full Stack Developer, Backend Developer, Web Developer, React, JavaScript, Bootstrap, Android Studio, Portfolio">
+    <meta name="author" content="Laexify">
+    <meta property="og:title" content="Laexify - Full Stack Developer">
+    <meta property="og:description" content="Full Stack Developer specializing in Backend development with expertise in modern web technologies.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Laexify - Full Stack Developer">
+    <meta name="twitter:description" content="Full Stack Developer specializing in Backend development.">
+    <title>Laexify - Full Stack Developer Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        .icon-container {
-            position: relative;
-            display: inline-block;
-        }
-        .icon-container .tooltip {
-            visibility: hidden;
-            width: 120px;
-            background-color: black;
-            color: #fff;
-            text-align: center;
-            border-radius: 6px;
-            padding: 5px 0;
-            position: absolute;
-            z-index: 1;
-            bottom: 125%;
-            left: 50%;
-            margin-left: -60px;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: opacity 0.3s, transform 0.3s;
-        }
-        .icon-container .tooltip::after {
-            content: "";
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            margin-left: -5px;
-            border-width: 5px;
-            border-style: solid;
-            border-color: black transparent transparent transparent;
-        }
-        .icon-container:hover .tooltip {
-            visibility: visible;
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .badge {
-            transition: transform 0.3s, opacity 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .badge:hover {
-            transform: scale(1.1);
-            opacity: 0.8;
-        }
-        .bg-blur {
-            background: url(img/bg.gif) no-repeat center center fixed;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            filter: blur(15px);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-    </style>
+    <link rel="stylesheet" href="cdn/assets/css/styles.css">
 </head>
-<body class="bg-gray-100 text-gray-800 flex items-center justify-center h-screen relative">
+<body class="bg-gray-100 text-gray-800 flex flex-col items-center justify-center min-h-screen relative">
     <div class="bg-blur"></div>
-    <main class="text-center fade-in bg-white bg-opacity-80 p-8 rounded-lg shadow-lg w-11/12 lg:w-3/4 xl:w-1/2 h-auto lg:h-[75vh] flex flex-col justify-center relative z-10">
+
+    <!-- Main Content -->
+    <main class="text-center fade-in bg-white bg-opacity-85 p-10 rounded-2xl shadow-2xl w-11/12 lg:w-3/4 xl:w-1/2 flex flex-col justify-center relative z-10 backdrop-blur-md border border-white border-opacity-20">
         <div class="flex flex-col items-center text-center gap-2 md:gap-3">
-            <img alt="pfp.png" src="img/profile.webp" draggable="false" class="rounded-full bg-gradient-to-r to-pink-500 from-blue-500 p-1 hover:opacity-80 duration-300" width="128">
+            <div class="profile-ring">
+                <img alt="pfp.png" src="cdn/img/profile.webp" draggable="false" class="profile-img rounded-full" width="128">
+            </div>
             <div class="flex items-center">
                 <span class="titleText font-bold text-5xl md:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500">Laexify</span>
                 <div class="flex gap-2 ml-4">
@@ -94,38 +50,182 @@
                     </div>
                 </div>
             </div>
-        </div> <br />
-        <div class="flex flex-col items-center text-center space-y-2 md:space-y-3">
-            <span class="text text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500 text-xs md:text-sm">
-                Hello! I'm currently studying Internet and Network Technologies. My primary focus is on Backend development, but I also have a good understanding of Frontend technologies. Below are some of the areas I'm interested in and have experience with.
-            </span>
         </div>
-        <div class="flex flex-row items-end justify-center my-3 md:my-5 gap-1 md:gap-2">
-            <a class="select-none duration-500 ease-out hover:-translate-y-2" href="https://github.com/thislaex">
-                <img src="img/github-original.svg" alt="GitHub" width="42" class="select-none hover:scale-110 hover:opacity-75 transition-transform duration-300">
+
+        <div class="my-6 px-4">
+            <div class="flex flex-col items-center text-center space-y-3">
+                <p class="text-base md:text-lg text-gray-700 leading-relaxed max-w-2xl">
+                    Hello! I'm currently studying <span class="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500">Internet and Network Technologies</span>. My primary focus is on Backend development, but I also have a good understanding of Frontend technologies. Below are some of the areas I'm interested in and have experience with.
+                </p>
+            </div>
+        </div>
+
+        <div class="flex flex-row items-end justify-center my-3 md:my-5 gap-2 md:gap-3">
+            <a class="social-link select-none duration-500 ease-out hover:-translate-y-2" href="https://github.com/thislaex" target="_blank" rel="noopener noreferrer">
+                <img src="cdn/img/github-original.svg" alt="GitHub" width="42" class="select-none hover:scale-110 hover:opacity-75 transition-transform duration-300">
             </a>
-            <a class="select-none duration-500 ease-out hover:-translate-y-2" href="https://instagram.com/Laexify">
-                <img src="img/instagram_logo.svg" alt="Instagram" width="42" class="select-none hover:scale-110 hover:opacity-75 transition-transform duration-300">
+            <a class="social-link select-none duration-500 ease-out hover:-translate-y-2" href="https://instagram.com/Laexify" target="_blank" rel="noopener noreferrer">
+                <img src="cdn/img/instagram_logo.svg" alt="Instagram" width="42" class="select-none hover:scale-110 hover:opacity-75 transition-transform duration-300">
+            </a>
+            <a class="social-link select-none duration-500 ease-out hover:-translate-y-2" href="https://discord.com/users/yourID" target="_blank" rel="noopener noreferrer">
+                <img src="cdn/img/discord-original.svg" alt="Discord" width="42" class="select-none hover:scale-110 hover:opacity-75 transition-transform duration-300">
+            </a>
+            <a class="social-link select-none duration-500 ease-out hover:-translate-y-2" href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">
+                <img src="cdn/img/linkedin-original.svg" alt="LinkedIn" width="42" class="select-none hover:scale-110 hover:opacity-75 transition-transform duration-300">
             </a>
         </div>
-        <div class="flex flex-wrap justify-center gap-4 p-4 bg-white bg-opacity-10 rounded-md">
+
+        <div class="mt-8 p-6 bg-white bg-opacity-15 rounded-xl backdrop-blur-sm">
+            <h3 class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500 mb-6">Skills & Expertise</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 text-left">
+                <div class="skill-card bg-white bg-opacity-30 p-5 rounded-xl shadow-lg">
+                    <h4 class="font-semibold text-gray-800 mb-2 flex items-center">
+                        <i class="fas fa-server mr-2 text-blue-500"></i>
+                        Backend Development
+                    </h4>
+                    <p class="text-sm text-gray-700">RESTful APIs, Database Design, Authentication, Server Architecture</p>
+                </div>
+                <div class="skill-card bg-white bg-opacity-30 p-5 rounded-xl shadow-lg">
+                    <h4 class="font-semibold text-gray-800 mb-2 flex items-center">
+                        <i class="fas fa-desktop mr-2 text-pink-500"></i>
+                        Frontend Development
+                    </h4>
+                    <p class="text-sm text-gray-700">Responsive Design, Modern Frameworks, UI/UX Implementation</p>
+                </div>
+                <div class="skill-card bg-white bg-opacity-30 p-5 rounded-xl shadow-lg">
+                    <h4 class="font-semibold text-gray-800 mb-2 flex items-center">
+                        <i class="fas fa-network-wired mr-2 text-green-500"></i>
+                        Network Technologies
+                    </h4>
+                    <p class="text-sm text-gray-700">TCP/IP, Network Security, System Administration, Cloud Services</p>
+                </div>
+                <div class="skill-card bg-white bg-opacity-30 p-5 rounded-xl shadow-lg">
+                    <h4 class="font-semibold text-gray-800 mb-2 flex items-center">
+                        <i class="fas fa-mobile-alt mr-2 text-purple-500"></i>
+                        Mobile Development
+                    </h4>
+                    <p class="text-sm text-gray-700">Android Applications, Cross-platform Development</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-5 p-8 bg-white bg-opacity-15 rounded-xl backdrop-blur-sm mt-6 shadow-lg">
+            <h3 class="w-full text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500 mb-4 text-center">Technologies I Work With</h3>
             <div class="icon-container">
-                <img src="img/bootstrap-plain.svg" alt="Bootstrap" class="w-12 h-12 hover:scale-110 hover:opacity-75 transition-transform duration-300">
-                <span class="tooltip">Bootstrap</span>
+                <img src="cdn/img/html5-original.svg" alt="HTML5" class="tech-icon w-12 h-12">
+                <span class="tooltip">HTML5</span>
             </div>
             <div class="icon-container">
-                <img src="img/react-original.svg" alt="React" class="w-12 h-12 hover:scale-110 hover:opacity-75 transition-transform duration-300">
-                <span class="tooltip">React</span>
-            </div>
-            <div class="icon-container">
-                <img src="img/javascript-original.svg" alt="JavaScript" class="w-12 h-12 hover:scale-110 hover:opacity-75 transition-transform duration-300">
+                <img src="cdn/img/javascript-original.svg" alt="JavaScript" class="tech-icon w-12 h-12">
                 <span class="tooltip">JavaScript</span>
             </div>
             <div class="icon-container">
-                <img src="img/androidstudio-original.svg" alt="Android Studio" class="w-12 h-12 hover:scale-110 hover:opacity-75 transition-transform duration-300">
+                <img src="cdn/img/typescript-original.svg" alt="TypeScript" class="tech-icon w-12 h-12">
+                <span class="tooltip">TypeScript</span>
+            </div>
+            <div class="icon-container">
+                <img src="cdn/img/react-original.svg" alt="React" class="tech-icon w-12 h-12">
+                <span class="tooltip">React</span>
+            </div>
+            <div class="icon-container">
+                <img src="cdn/img/nodejs-original.svg" alt="Node.js" class="tech-icon w-12 h-12">
+                <span class="tooltip">Node.js</span>
+            </div>
+            <div class="icon-container">
+                <img src="cdn/img/express-original.svg" alt="Express.js" class="tech-icon w-12 h-12">
+                <span class="tooltip">Express.js</span>
+            </div>
+            <div class="icon-container">
+                <img src="cdn/img/mongodb-original.svg" alt="MongoDB" class="tech-icon w-12 h-12">
+                <span class="tooltip">MongoDB</span>
+            </div>
+            <div class="icon-container">
+                <img src="cdn/img/mysql-original.svg" alt="MySQL" class="tech-icon w-12 h-12">
+                <span class="tooltip">MySQL</span>
+            </div>
+            <div class="icon-container">
+                <img src="cdn/img/postgresql-original.svg" alt="PostgreSQL" class="tech-icon w-12 h-12">
+                <span class="tooltip">PostgreSQL</span>
+            </div>
+            <div class="icon-container">
+                <img src="cdn/img/python-original.svg" alt="Python" class="tech-icon w-12 h-12">
+                <span class="tooltip">Python</span>
+            </div>
+            <div class="icon-container">
+                <img src="cdn/img/php-original.svg" alt="PHP" class="tech-icon w-12 h-12">
+                <span class="tooltip">PHP</span>
+            </div>
+            <div class="icon-container">
+                <img src="cdn/img/bootstrap-plain.svg" alt="Bootstrap" class="tech-icon w-12 h-12">
+                <span class="tooltip">Bootstrap</span>
+            </div>
+            <div class="icon-container">
+                <img src="cdn/img/tailwindcss-plain.svg" alt="Tailwind CSS" class="tech-icon w-12 h-12">
+                <span class="tooltip">Tailwind CSS</span>
+            </div>
+            <div class="icon-container">
+                <img src="cdn/img/git-original.svg" alt="Git" class="tech-icon w-12 h-12">
+                <span class="tooltip">Git</span>
+            </div>
+            <div class="icon-container">
+                <img src="cdn/img/github-original.svg" alt="GitHub" class="tech-icon w-12 h-12">
+                <span class="tooltip">GitHub</span>
+            </div>
+            <div class="icon-container">
+                <img src="cdn/img/docker-original.svg" alt="Docker" class="tech-icon w-12 h-12">
+                <span class="tooltip">Docker</span>
+            </div>
+            <div class="icon-container">
+                <img src="cdn/img/linux-original.svg" alt="Linux" class="tech-icon w-12 h-12">
+                <span class="tooltip">Linux</span>
+            </div>
+            <div class="icon-container">
+                <img src="cdn/img/vscode-original.svg" alt="VS Code" class="tech-icon w-12 h-12">
+                <span class="tooltip">VS Code</span>
+            </div>
+            <div class="icon-container">
+                <img src="cdn/img/androidstudio-original.svg" alt="Android Studio" class="tech-icon w-12 h-12">
                 <span class="tooltip">Android Studio</span>
             </div>
         </div>
     </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-white bg-opacity-90 w-full py-8 mt-10 shadow-lg relative z-10">
+        <div class="container mx-auto px-4 md:px-8 lg:px-16">
+            <h2 class="text-lg font-semibold text-center text-gray-700">Get In Touch</h2>
+            <p class="text-sm text-center text-gray-600 mt-3 mb-4">Feel free to reach out to me through my social media or email for collaborations and inquiries.</p>
+            <div class="text-center">
+                <a href="mailto:iletisim@laex.com.tr" class="text-blue-600 hover:text-pink-600 transition-colors duration-300 font-medium">iletisim@laex.com.tr</a>
+            </div>
+            <div class="mt-6 pt-4 border-t border-gray-300 text-center text-xs text-gray-500">
+                <p>2024 - 2025 Laexify. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const main = document.querySelector('main');
+            const techIcons = document.querySelectorAll('.tech-icon');
+            
+            setTimeout(() => {
+                main.classList.add('fade-in');
+            }, 100);
+
+            techIcons.forEach((icon, index) => {
+                setTimeout(() => {
+                    icon.style.opacity = '0';
+                    icon.style.transform = 'scale(0.5)';
+                    icon.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    
+                    setTimeout(() => {
+                        icon.style.opacity = '1';
+                        icon.style.transform = 'scale(1)';
+                    }, 50);
+                }, index * 50);
+            });
+        });
+    </script>
 </body>
 </html>
