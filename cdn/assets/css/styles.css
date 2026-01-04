@@ -4,8 +4,167 @@
     box-sizing: border-box;
 }
 
+:root {
+    --bg-primary: #f3f4f6;
+    --bg-secondary: #ffffff;
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+    --border-color: rgba(255, 255, 255, 0.2);
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+    --bg-primary: #1a1a2e;
+    --bg-secondary: #16213e;
+    --text-primary: #eaeaea;
+    --text-secondary: #a0a0a0;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+[data-theme="dark"] body {
+    background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+}
+
+[data-theme="dark"] .bg-blur {
+    filter: blur(15px) brightness(0.4);
+    opacity: 0.7;
+}
+
+[data-theme="dark"] main {
+    background-color: rgba(22, 33, 62, 0.95) !important;
+    border-color: rgba(99, 102, 241, 0.3) !important;
+}
+
+[data-theme="dark"] .skill-card,
+[data-theme="dark"] .project-card,
+[data-theme="dark"] .blog-card,
+[data-theme="dark"] .stat-box {
+    background-color: rgba(30, 41, 59, 0.6) !important;
+    color: var(--text-primary) !important;
+    border-color: rgba(99, 102, 241, 0.2) !important;
+}
+
+[data-theme="dark"] .skill-card:hover,
+[data-theme="dark"] .project-card:hover {
+    background-color: rgba(30, 41, 59, 0.8) !important;
+    border-color: rgba(99, 102, 241, 0.4) !important;
+}
+
+[data-theme="dark"] .text-gray-700,
+[data-theme="dark"] .text-gray-600,
+[data-theme="dark"] .text-gray-800,
+[data-theme="dark"] .text-gray-500 {
+    color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] p,
+[data-theme="dark"] h4,
+[data-theme="dark"] span:not(.tooltip):not([class*="bg-"]) {
+    color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] footer {
+    background-color: rgba(15, 23, 42, 0.95) !important;
+    border-top: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+[data-theme="dark"] input,
+[data-theme="dark"] textarea {
+    background-color: rgba(30, 41, 59, 0.8);
+    border-color: rgba(99, 102, 241, 0.3);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] input:focus,
+[data-theme="dark"] textarea:focus {
+    border-color: rgba(99, 102, 241, 0.6);
+    background-color: rgba(30, 41, 59, 0.9);
+}
+
+[data-theme="dark"] input::placeholder,
+[data-theme="dark"] textarea::placeholder {
+    color: var(--text-secondary);
+}
+
+[data-theme="dark"] .tooltip {
+    background-color: rgba(15, 23, 42, 0.95) !important;
+    border: 1px solid rgba(99, 102, 241, 0.3);
+}
+
+[data-theme="dark"] .icon-container .tooltip::after {
+    border-color: rgba(15, 23, 42, 0.95) transparent transparent transparent !important;
+}
+
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4 {
+    color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] .bg-white {
+    background-color: rgba(30, 41, 59, 0.3) !important;
+}
+
+[data-theme="dark"] .bg-opacity-15,
+[data-theme="dark"] .bg-opacity-30 {
+    background-color: rgba(30, 41, 59, 0.5) !important;
+}
+
+[data-theme="dark"] .tech-icon {
+    filter: drop-shadow(0 2px 8px rgba(99, 102, 241, 0.3));
+}
+
+[data-theme="dark"] .tech-icon:hover {
+    filter: drop-shadow(0 8px 20px rgba(99, 102, 241, 0.5));
+}
+
+[data-theme="dark"] .badge {
+    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+}
+
+[data-theme="dark"] .badge:hover {
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.5);
+}
+
+[data-theme="dark"] .text-blue-600 {
+    color: #60a5fa !important;
+}
+
+[data-theme="dark"] .text-pink-600 {
+    color: #f472b6 !important;
+}
+
+[data-theme="dark"] .text-green-600 {
+    color: #4ade80 !important;
+}
+
+[data-theme="dark"] .text-yellow-500 {
+    color: #fbbf24 !important;
+}
+
+[data-theme="dark"] .text-blue-500 {
+    color: #60a5fa !important;
+}
+
+[data-theme="dark"] .text-pink-500 {
+    color: #f472b6 !important;
+}
+
+[data-theme="dark"] .bg-gray-200 {
+    background-color: rgba(71, 85, 105, 0.8) !important;
+    color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] .border-gray-300 {
+    border-color: rgba(99, 102, 241, 0.2) !important;
 }
 
 .profile-ring {
@@ -206,4 +365,37 @@ body {
     50% {
         opacity: 0.5;
     }
+}
+
+.project-card {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+.blog-card {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.blog-card:hover {
+    transform: translateX(5px);
+}
+
+.stat-box {
+    transition: all 0.3s ease;
+}
+
+.stat-box:hover {
+    transform: scale(1.05);
+}
+
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +13,7 @@
     <meta name="twitter:title" content="Laexify - Full Stack Developer">
     <meta name="twitter:description" content="Full Stack Developer specializing in Backend development.">
     <title>Laexify - Full Stack Developer Portfolio</title>
+    <link rel="icon" type="image/x-icon" href="cdn/img/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -20,8 +21,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="cdn/assets/css/styles.css">
 </head>
-<body class="bg-gray-100 text-gray-800 flex flex-col items-center justify-center min-h-screen relative">
+<body class="bg-gray-100 text-gray-800 flex flex-col items-center justify-center min-h-screen relative transition-colors duration-300">
     <div class="bg-blur"></div>
+
+    <div class="fixed top-6 right-6 z-50 flex gap-3">
+        <button id="themeToggle" class="bg-white bg-opacity-20 backdrop-blur-md p-3 rounded-full shadow-lg hover:scale-110 transition-all duration-300 border border-white border-opacity-30">
+            <i class="fas fa-moon text-xl"></i>
+        </button>
+        <button id="langToggle" class="bg-white bg-opacity-20 backdrop-blur-md px-4 py-3 rounded-full shadow-lg hover:scale-110 transition-all duration-300 border border-white border-opacity-30 font-semibold">
+            EN
+        </button>
+    </div>
 
     <!-- Main Content -->
     <main class="text-center fade-in bg-white bg-opacity-85 p-10 rounded-2xl shadow-2xl w-11/12 lg:w-3/4 xl:w-1/2 flex flex-col justify-center relative z-10 backdrop-blur-md border border-white border-opacity-20">
@@ -54,9 +64,35 @@
 
         <div class="my-6 px-4">
             <div class="flex flex-col items-center text-center space-y-3">
-                <p class="text-base md:text-lg text-gray-700 leading-relaxed max-w-2xl">
+                <p class="text-base md:text-lg leading-relaxed max-w-2xl" data-lang="en">
                     Hello! I'm currently studying <span class="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500">Internet and Network Technologies</span>. My primary focus is on Backend development, but I also have a good understanding of Frontend technologies. Below are some of the areas I'm interested in and have experience with.
                 </p>
+                <p class="text-base md:text-lg leading-relaxed max-w-2xl hidden" data-lang="tr">
+                    Merhaba! Şu anda <span class="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500">İnternet ve Ağ Teknolojileri</span> okuyorum. Öncelikli odak noktam Backend geliştirme olmakla birlikte, Frontend teknolojileri konusunda da iyi bir anlayışa sahibim. Aşağıda ilgilendiğim ve deneyim sahibi olduğum alanlardan bazılarını bulabilirsiniz.
+                </p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+            <div class="stat-box bg-white bg-opacity-30 p-4 rounded-xl backdrop-blur-sm">
+                <div class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500" data-target="50">0</div>
+                <div class="text-sm mt-1" data-lang="en">Projects</div>
+                <div class="text-sm mt-1 hidden" data-lang="tr">Proje</div>
+            </div>
+            <div class="stat-box bg-white bg-opacity-30 p-4 rounded-xl backdrop-blur-sm">
+                <div class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-blue-500" data-target="19">0</div>
+                <div class="text-sm mt-1" data-lang="en">Technologies</div>
+                <div class="text-sm mt-1 hidden" data-lang="tr">Teknoloji</div>
+            </div>
+            <div class="stat-box bg-white bg-opacity-30 p-4 rounded-xl backdrop-blur-sm">
+                <div class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500" data-target="3">0</div>
+                <div class="text-sm mt-1" data-lang="en">Years Learning</div>
+                <div class="text-sm mt-1 hidden" data-lang="tr">Yıl Deneyim</div>
+            </div>
+            <div class="stat-box bg-white bg-opacity-30 p-4 rounded-xl backdrop-blur-sm">
+                <div class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500" data-target="100">0</div>
+                <div class="text-sm mt-1" data-lang="en">Dedication</div>
+                <div class="text-sm mt-1 hidden" data-lang="tr">Motivasyon</div>
             </div>
         </div>
 
@@ -76,41 +112,55 @@
         </div>
 
         <div class="mt-8 p-6 bg-white bg-opacity-15 rounded-xl backdrop-blur-sm">
-            <h3 class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500 mb-6">Skills & Expertise</h3>
+            <h3 class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500 mb-6">
+                <span data-lang="en">Skills & Expertise</span>
+                <span class="hidden" data-lang="tr">Yetenekler & Uzmanlık</span>
+            </h3>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5 text-left">
                 <div class="skill-card bg-white bg-opacity-30 p-5 rounded-xl shadow-lg">
-                    <h4 class="font-semibold text-gray-800 mb-2 flex items-center">
+                    <h4 class="font-semibold mb-2 flex items-center">
                         <i class="fas fa-server mr-2 text-blue-500"></i>
-                        Backend Development
+                        <span data-lang="en">Backend Development</span>
+                        <span class="hidden" data-lang="tr">Backend Geliştirme</span>
                     </h4>
-                    <p class="text-sm text-gray-700">RESTful APIs, Database Design, Authentication, Server Architecture</p>
+                    <p class="text-sm" data-lang="en">RESTful APIs, Database Design, Authentication, Server Architecture</p>
+                    <p class="text-sm hidden" data-lang="tr">RESTful API, Veritabanı Tasarımı, Kimlik Doğrulama, Sunucu Mimarisi</p>
                 </div>
                 <div class="skill-card bg-white bg-opacity-30 p-5 rounded-xl shadow-lg">
-                    <h4 class="font-semibold text-gray-800 mb-2 flex items-center">
+                    <h4 class="font-semibold mb-2 flex items-center">
                         <i class="fas fa-desktop mr-2 text-pink-500"></i>
-                        Frontend Development
+                        <span data-lang="en">Frontend Development</span>
+                        <span class="hidden" data-lang="tr">Frontend Geliştirme</span>
                     </h4>
-                    <p class="text-sm text-gray-700">Responsive Design, Modern Frameworks, UI/UX Implementation</p>
+                    <p class="text-sm" data-lang="en">Responsive Design, Modern Frameworks, UI/UX Implementation</p>
+                    <p class="text-sm hidden" data-lang="tr">Responsive Tasarım, Modern Framework'ler, UI/UX Uygulaması</p>
                 </div>
                 <div class="skill-card bg-white bg-opacity-30 p-5 rounded-xl shadow-lg">
-                    <h4 class="font-semibold text-gray-800 mb-2 flex items-center">
+                    <h4 class="font-semibold mb-2 flex items-center">
                         <i class="fas fa-network-wired mr-2 text-green-500"></i>
-                        Network Technologies
+                        <span data-lang="en">Network Technologies</span>
+                        <span class="hidden" data-lang="tr">Ağ Teknolojileri</span>
                     </h4>
-                    <p class="text-sm text-gray-700">TCP/IP, Network Security, System Administration, Cloud Services</p>
+                    <p class="text-sm" data-lang="en">TCP/IP, Network Security, System Administration, Cloud Services</p>
+                    <p class="text-sm hidden" data-lang="tr">TCP/IP, Ağ Güvenliği, Sistem Yönetimi, Bulut Hizmetleri</p>
                 </div>
                 <div class="skill-card bg-white bg-opacity-30 p-5 rounded-xl shadow-lg">
-                    <h4 class="font-semibold text-gray-800 mb-2 flex items-center">
+                    <h4 class="font-semibold mb-2 flex items-center">
                         <i class="fas fa-mobile-alt mr-2 text-purple-500"></i>
-                        Mobile Development
+                        <span data-lang="en">Mobile Development</span>
+                        <span class="hidden" data-lang="tr">Mobil Geliştirme</span>
                     </h4>
-                    <p class="text-sm text-gray-700">Android Applications, Cross-platform Development</p>
+                    <p class="text-sm" data-lang="en">Android Applications, Cross-platform Development</p>
+                    <p class="text-sm hidden" data-lang="tr">Android Uygulamaları, Çapraz Platform Geliştirme</p>
                 </div>
             </div>
         </div>
 
         <div class="flex flex-wrap justify-center gap-5 p-8 bg-white bg-opacity-15 rounded-xl backdrop-blur-sm mt-6 shadow-lg">
-            <h3 class="w-full text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500 mb-4 text-center">Technologies I Work With</h3>
+            <h3 class="w-full text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500 mb-4 text-center">
+                <span data-lang="en">Technologies I Work With</span>
+                <span class="hidden" data-lang="tr">Kullandığım Teknolojiler</span>
+            </h3>
             <div class="icon-container">
                 <img src="cdn/img/html5-original.svg" alt="HTML5" class="tech-icon w-12 h-12">
                 <span class="tooltip">HTML5</span>
@@ -188,27 +238,118 @@
                 <span class="tooltip">Android Studio</span>
             </div>
         </div>
+
+        <div class="mt-8 p-6 bg-white bg-opacity-15 rounded-xl backdrop-blur-sm">
+            <h3 class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500 mb-6 text-center">
+                <span data-lang="en">Featured Projects</span>
+                <span class="hidden" data-lang="tr">Öne Çıkan Projeler</span>
+            </h3>
+            <div id="projectsContainer" class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div class="col-span-full text-center py-8">
+                    <i class="fas fa-spinner fa-spin text-4xl text-blue-500"></i>
+                    <p class="mt-2 text-gray-600" data-lang="en">Loading projects...</p>
+                    <p class="mt-2 text-gray-600 hidden" data-lang="tr">Projeler yükleniyor...</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-8 p-6 bg-white bg-opacity-15 rounded-xl backdrop-blur-sm">
+            <h3 class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500 mb-6 text-center">
+                <span data-lang="en">Latest Articles</span>
+                <span class="hidden" data-lang="tr">Son Yazılar</span>
+            </h3>
+            <div class="space-y-4">
+                <div class="blog-card bg-white bg-opacity-30 p-4 rounded-xl hover:shadow-lg transition-all duration-300">
+                    <div class="flex items-start gap-4">
+                        <div class="text-blue-500 text-3xl">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-semibold text-lg mb-1" data-lang="en">Modern Web Development Best Practices</h4>
+                            <h4 class="font-semibold text-lg mb-1 hidden" data-lang="tr">Modern Web Geliştirme En İyi Uygulamaları</h4>
+                            <p class="text-sm text-gray-600 mb-2">January 4, 2026</p>
+                            <p class="text-sm" data-lang="en">Exploring the latest trends and best practices in modern web development...</p>
+                            <p class="text-sm hidden" data-lang="tr">Modern web geliştirmede son trendler ve en iyi uygulamaları keşfetmek...</p>
+                            <a href="#" class="text-blue-600 hover:text-pink-600 text-sm font-medium mt-2 inline-block">
+                                <span data-lang="en">Read More →</span>
+                                <span class="hidden" data-lang="tr">Devamını Oku →</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="blog-card bg-white bg-opacity-30 p-4 rounded-xl hover:shadow-lg transition-all duration-300">
+                    <div class="flex items-start gap-4">
+                        <div class="text-pink-500 text-3xl">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-semibold text-lg mb-1" data-lang="en">Database Design Principles</h4>
+                            <h4 class="font-semibold text-lg mb-1 hidden" data-lang="tr">Veritabanı Tasarım İlkeleri</h4>
+                            <p class="text-sm text-gray-600 mb-2">January 1, 2026</p>
+                            <p class="text-sm" data-lang="en">Understanding the fundamentals of efficient database design and optimization...</p>
+                            <p class="text-sm hidden" data-lang="tr">Verimli veritabanı tasarımı ve optimizasyonun temellerini anlamak...</p>
+                            <a href="#" class="text-blue-600 hover:text-pink-600 text-sm font-medium mt-2 inline-block">
+                                <span data-lang="en">Read More →</span>
+                                <span class="hidden" data-lang="tr">Devamını Oku →</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
-    <!-- Footer Section -->
     <footer class="bg-white bg-opacity-90 w-full py-8 mt-10 shadow-lg relative z-10">
         <div class="container mx-auto px-4 md:px-8 lg:px-16">
-            <h2 class="text-lg font-semibold text-center text-gray-700">Get In Touch</h2>
-            <p class="text-sm text-center text-gray-600 mt-3 mb-4">Feel free to reach out to me through my social media or email for collaborations and inquiries.</p>
-            <div class="text-center">
+            <h2 class="text-lg font-semibold text-center">
+                <span data-lang="en">Get In Touch</span>
+                <span class="hidden" data-lang="tr">İletişime Geçin</span>
+            </h2>
+            <p class="text-sm text-center text-gray-600 mt-3 mb-6" data-lang="en">Feel free to reach out to me through my social media or email for collaborations and inquiries.</p>
+            <p class="text-sm text-center text-gray-600 mt-3 mb-6 hidden" data-lang="tr">İşbirlikleri ve sorularınız için sosyal medya veya email üzerinden benimle iletişime geçebilirsiniz.</p>
+            
+            <form id="contactForm" class="max-w-xl mx-auto space-y-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <input type="text" placeholder="Your Name" data-placeholder-en="Your Name" data-placeholder-tr="Adınız" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-blue-500 focus:outline-none transition-colors" required>
+                    <input type="email" placeholder="Your Email" data-placeholder-en="Your Email" data-placeholder-tr="Email Adresiniz" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-blue-500 focus:outline-none transition-colors" required>
+                </div>
+                <input type="text" placeholder="Subject" data-placeholder-en="Subject" data-placeholder-tr="Konu" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-blue-500 focus:outline-none transition-colors" required>
+                <textarea placeholder="Your Message" data-placeholder-en="Your Message" data-placeholder-tr="Mesajınız" rows="4" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-blue-500 focus:outline-none transition-colors resize-none" required></textarea>
+                <button type="submit" class="w-full bg-gradient-to-r from-blue-500 to-pink-500 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+                    <span data-lang="en">Send Message</span>
+                    <span class="hidden" data-lang="tr">Mesaj Gönder</span>
+                </button>
+            </form>
+
+            <div class="text-center mt-8">
                 <a href="mailto:iletisim@laex.com.tr" class="text-blue-600 hover:text-pink-600 transition-colors duration-300 font-medium">iletisim@laex.com.tr</a>
             </div>
             <div class="mt-6 pt-4 border-t border-gray-300 text-center text-xs text-gray-500">
-                <p>2024 - 2025 Laexify. All rights reserved.</p>
+                <p>2024 - 2026 Laexify. <span data-lang="en">All rights reserved.</span><span class="hidden" data-lang="tr">Tüm hakları saklıdır.</span></p>
             </div>
         </div>
     </footer>
 
     <script>
+        let currentLang = 'en';
+        let currentTheme = 'light';
+
         document.addEventListener('DOMContentLoaded', function() {
             const main = document.querySelector('main');
             const techIcons = document.querySelectorAll('.tech-icon');
+            const themeToggle = document.getElementById('themeToggle');
+            const langToggle = document.getElementById('langToggle');
+            const html = document.documentElement;
+            const contactForm = document.getElementById('contactForm');
             
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            const savedLang = localStorage.getItem('lang') || 'en';
+            currentTheme = savedTheme;
+            currentLang = savedLang;
+            html.setAttribute('data-theme', savedTheme);
+            themeToggle.querySelector('i').className = savedTheme === 'dark' ? 'fas fa-sun text-xl' : 'fas fa-moon text-xl';
+            switchLanguage(savedLang);
+
             setTimeout(() => {
                 main.classList.add('fade-in');
             }, 100);
@@ -225,7 +366,145 @@
                     }, 50);
                 }, index * 50);
             });
+
+            const statBoxes = document.querySelectorAll('.stat-box');
+            const observerOptions = {
+                threshold: 0.5
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = entry.target.querySelector('[data-target]');
+                        const finalValue = parseInt(target.getAttribute('data-target'));
+                        animateCounter(target, finalValue);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            statBoxes.forEach(box => observer.observe(box));
+
+            themeToggle.addEventListener('click', () => {
+                currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+                html.setAttribute('data-theme', currentTheme);
+                localStorage.setItem('theme', currentTheme);
+                themeToggle.querySelector('i').className = currentTheme === 'dark' ? 'fas fa-sun text-xl' : 'fas fa-moon text-xl';
+            });
+
+            langToggle.addEventListener('click', () => {
+                currentLang = currentLang === 'en' ? 'tr' : 'en';
+                switchLanguage(currentLang);
+                localStorage.setItem('lang', currentLang);
+            });
+
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert(currentLang === 'en' ? 'Message sent successfully!' : 'Mesaj başarıyla gönderildi!');
+                contactForm.reset();
+            });
         });
+
+        function animateCounter(element, target) {
+            let current = 0;
+            const increment = target / 50;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current);
+                }
+            }, 30);
+        }
+
+        function switchLanguage(lang) {
+            document.querySelectorAll('[data-lang]').forEach(el => {
+                el.classList.toggle('hidden', el.getAttribute('data-lang') !== lang);
+            });
+            
+            document.querySelectorAll('[data-placeholder-en]').forEach(el => {
+                el.placeholder = lang === 'en' ? el.getAttribute('data-placeholder-en') : el.getAttribute('data-placeholder-tr');
+            });
+            
+            document.getElementById('langToggle').textContent = lang.toUpperCase();
+            document.documentElement.setAttribute('lang', lang);
+        }
+
+        async function loadGitHubProjects() {
+            const container = document.getElementById('projectsContainer');
+            const username = 'thislaex';
+            
+            try {
+                const response = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=6`);
+                const repos = await response.json();
+                
+                if (repos.message === 'Not Found') {
+                    throw new Error('User not found');
+                }
+                
+                const languageColors = {
+                    'JavaScript': 'bg-yellow-500',
+                    'TypeScript': 'bg-blue-600',
+                    'Python': 'bg-blue-400',
+                    'HTML': 'bg-orange-500',
+                    'CSS': 'bg-purple-500',
+                    'PHP': 'bg-indigo-500',
+                    'Java': 'bg-red-600',
+                    'C++': 'bg-pink-600',
+                    'Go': 'bg-cyan-500',
+                    'Rust': 'bg-orange-700'
+                };
+
+                container.innerHTML = repos.slice(0, 6).map(repo => `
+                    <div class="project-card bg-white bg-opacity-30 p-5 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <h4 class="font-bold text-lg">${repo.name}</h4>
+                            ${repo.language ? `<span class="text-xs ${languageColors[repo.language] || 'bg-gray-500'} text-white px-2 py-1 rounded-full">${repo.language}</span>` : ''}
+                        </div>
+                        <p class="text-sm mb-3 line-clamp-2">${repo.description || (currentLang === 'en' ? 'No description available.' : 'Açıklama mevcut değil.')}</p>
+                        <div class="flex items-center gap-4 mb-3 text-xs text-gray-600">
+                            <span class="flex items-center gap-1">
+                                <i class="fas fa-star text-yellow-500"></i>
+                                ${repo.stargazers_count}
+                            </span>
+                            <span class="flex items-center gap-1">
+                                <i class="fas fa-code-branch text-blue-500"></i>
+                                ${repo.forks_count}
+                            </span>
+                        </div>
+                        <div class="flex gap-2">
+                            <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-pink-600 text-sm font-medium flex items-center gap-1">
+                                <i class="fab fa-github"></i>
+                                <span data-lang="en">View Code</span>
+                                <span class="hidden" data-lang="tr">Kodu Gör</span>
+                            </a>
+                            ${repo.homepage ? `
+                                <a href="${repo.homepage}" target="_blank" rel="noopener noreferrer" class="text-green-600 hover:text-pink-600 text-sm font-medium flex items-center gap-1">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    <span data-lang="en">Live Demo</span>
+                                    <span class="hidden" data-lang="tr">Canlı Demo</span>
+                                </a>
+                            ` : ''}
+                        </div>
+                    </div>
+                `).join('');
+
+                switchLanguage(currentLang);
+            } catch (error) {
+                container.innerHTML = `
+                    <div class="col-span-full text-center py-8">
+                        <i class="fas fa-exclamation-triangle text-4xl text-red-500 mb-3"></i>
+                        <p class="text-gray-600" data-lang="en">Unable to load projects. Please try again later.</p>
+                        <p class="text-gray-600 hidden" data-lang="tr">Projeler yüklenemiyor. Lütfen daha sonra tekrar deneyin.</p>
+                    </div>
+                `;
+                switchLanguage(currentLang);
+            }
+        }
+
+        loadGitHubProjects();
     </script>
 </body>
 </html>
