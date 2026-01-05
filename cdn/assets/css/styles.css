@@ -61,6 +61,7 @@ body {
 [data-theme="dark"] .text-gray-700,
 [data-theme="dark"] .text-gray-600,
 [data-theme="dark"] .text-gray-800,
+[data-theme="dark"] .text-gray-900,
 [data-theme="dark"] .text-gray-500 {
     color: var(--text-primary) !important;
 }
@@ -398,4 +399,92 @@ body {
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+}
+/* Print-Friendly Styles */
+@media print {
+    @page {
+        margin: 1.5cm;
+        size: A4;
+    }
+    
+    body {
+        background: white !important;
+        color: black !important;
+    }
+    
+    .bg-blur,
+    #themeToggle,
+    #langToggle,
+    #langDropdown,
+    [href*="download"],
+    .social-link,
+    .project-filter-btn,
+    #activityContainer,
+    footer form,
+    button[type="submit"] {
+        display: none !important;
+    }
+    
+    main {
+        box-shadow: none !important;
+        border: 1px solid #ddd !important;
+        background: white !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 1cm !important;
+        margin: 0 !important;
+    }
+    
+    .profile-ring {
+        animation: none !important;
+    }
+    
+    .stat-box,
+    .skill-card,
+    .project-card {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        background: white !important;
+        border: 1px solid #ddd !important;
+    }
+    
+    a {
+        color: black !important;
+        text-decoration: underline !important;
+    }
+    
+    a[href]:after {
+        content: " (" attr(href) ")";
+        font-size: 0.8em;
+        color: #666;
+    }
+    
+    .text-transparent,
+    .bg-clip-text {
+        -webkit-text-fill-color: black !important;
+        background: none !important;
+        color: black !important;
+    }
+}
+
+.project-filter-btn.active {
+    background: linear-gradient(to right, #3b82f6, #ec4899) !important;
+    color: white !important;
+}
+.project-filter-btn {
+    background: rgba(255, 255, 255, 0.3);
+    color: inherit;
+    border: 2px solid transparent;
+}
+
+.project-filter-btn:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+[data-theme="dark"] .project-filter-btn {
+    background: rgba(30, 41, 59, 0.6);
+}
+
+[data-theme="dark"] .project-filter-btn:hover {
+    background: rgba(30, 41, 59, 0.8);
 }
