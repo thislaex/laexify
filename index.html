@@ -66,6 +66,7 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="cdn/assets/css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script>
@@ -507,6 +508,22 @@
 
         <div class="mt-6 sm:mt-8 p-4 sm:p-6 bg-white bg-opacity-15 rounded-xl backdrop-blur-sm">
             <h3 class="text-xl sm:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500 mb-4 sm:mb-6 text-center">
+                <span data-lang="en">GitHub Statistics</span>
+                <span class="hidden" data-lang="tr">GitHub İstatistikleri</span>
+            </h3>
+            <div id="githubStatsContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="text-center py-8 col-span-full">
+                    <i class="fas fa-spinner fa-spin text-4xl text-blue-500"></i>
+                    <p class="mt-2 text-gray-600" data-lang="en">Loading stats...</p>
+                    <p class="mt-2 text-gray-600 hidden" data-lang="tr">İstatistikler yükleniyor...</p>
+                </div>
+            </div>
+            <div id="languageStatsContainer" class="mt-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+            </div>
+        </div>
+
+        <div class="mt-6 sm:mt-8 p-4 sm:p-6 bg-white bg-opacity-15 rounded-xl backdrop-blur-sm">
+            <h3 class="text-xl sm:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500 mb-4 sm:mb-6 text-center">
                 <span data-lang="en">Recent GitHub Activity</span>
                 <span class="hidden" data-lang="tr">Son GitHub Aktiviteleri</span>
             </h3>
@@ -515,6 +532,170 @@
                     <i class="fas fa-spinner fa-spin text-4xl text-blue-500"></i>
                     <p class="mt-2 text-gray-600" data-lang="en">Loading activity...</p>
                     <p class="mt-2 text-gray-600 hidden" data-lang="tr">Aktiviteler yükleniyor...</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-6 sm:mt-8 p-4 sm:p-6 bg-white bg-opacity-15 rounded-xl backdrop-blur-sm">
+            <h3 class="text-xl sm:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500 mb-4 sm:mb-6 text-center">
+                <span data-lang="en">Career & Education Timeline</span>
+                <span class="hidden" data-lang="tr">Kariyer & Eğitim Zaman Çizelgesi</span>
+            </h3>
+            <div class="relative">
+                <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-blue-500 via-pink-500 to-purple-500"></div>
+                
+                <div class="timeline-item mb-8 flex items-center w-full">
+                    <div class="w-1/2 pr-8 text-right">
+                        <div class="bg-white bg-opacity-30 p-4 rounded-xl">
+                            <h4 class="font-bold text-lg mb-1" data-lang="en">Internet and Network Technologies</h4>
+                            <h4 class="font-bold text-lg mb-1 hidden" data-lang="tr">İnternet ve Ağ Teknolojileri</h4>
+                            <p class="text-sm text-gray-600" data-lang="en">Associate Degree</p>
+                            <p class="text-sm text-gray-600 hidden" data-lang="tr">Ön Lisans</p>
+                            <p class="text-xs text-gray-500 mt-2">2024 - Present</p>
+                        </div>
+                    </div>
+                    <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-pink-500 rounded-full flex items-center justify-center z-10 flex-shrink-0">
+                        <i class="fas fa-graduation-cap text-white"></i>
+                    </div>
+                    <div class="w-1/2 pl-8"></div>
+                </div>
+
+                <div class="timeline-item mb-8 flex items-center w-full flex-row-reverse">
+                    <div class="w-1/2 pl-8 text-left">
+                        <div class="bg-white bg-opacity-30 p-4 rounded-xl">
+                            <h4 class="font-bold text-lg mb-1" data-lang="en">Full Stack Developer</h4>
+                            <h4 class="font-bold text-lg mb-1 hidden" data-lang="tr">Full Stack Developer</h4>
+                            <p class="text-sm text-gray-600" data-lang="en">Freelance Projects</p>
+                            <p class="text-sm text-gray-600 hidden" data-lang="tr">Serbest Projeler</p>
+                            <p class="text-xs text-gray-500 mt-2">2021 - Present</p>
+                        </div>
+                    </div>
+                    <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center z-10 flex-shrink-0">
+                        <i class="fas fa-briefcase text-white"></i>
+                    </div>
+                    <div class="w-1/2 pr-8"></div>
+                </div>
+
+                <div class="timeline-item mb-8 flex items-center w-full">
+                    <div class="w-1/2 pr-8 text-right">
+                        <div class="bg-white bg-opacity-30 p-4 rounded-xl">
+                            <h4 class="font-bold text-lg mb-1" data-lang="en">Started Web Development Journey</h4>
+                            <h4 class="font-bold text-lg mb-1 hidden" data-lang="tr">Web Geliştirme Yolculuğu Başladı</h4>
+                            <p class="text-sm text-gray-600" data-lang="en">Self-taught Learning</p>
+                            <p class="text-sm text-gray-600 hidden" data-lang="tr">Kendi Kendine Öğrenme</p>
+                            <p class="text-xs text-gray-500 mt-2">2021</p>
+                        </div>
+                    </div>
+                    <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center z-10 flex-shrink-0">
+                        <i class="fas fa-rocket text-white"></i>
+                    </div>
+                    <div class="w-1/2 pl-8"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-6 sm:mt-8 p-4 sm:p-6 bg-white bg-opacity-15 rounded-xl backdrop-blur-sm">
+            <h3 class="text-xl sm:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500 mb-4 sm:mb-6 text-center">
+                <span data-lang="en">Tech Stack Proficiency</span>
+                <span class="hidden" data-lang="tr">Teknoloji Yetkinliği</span>
+            </h3>
+            <div class="flex justify-center">
+                <canvas id="radarChart" width="400" height="400" class="max-w-full"></canvas>
+            </div>
+        </div>
+
+        <div class="mt-6 sm:mt-8 p-4 sm:p-6 bg-white bg-opacity-15 rounded-xl backdrop-blur-sm">
+            <h3 class="text-xl sm:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500 mb-4 sm:mb-6 text-center">
+                <span data-lang="en">Testimonials</span>
+                <span class="hidden" data-lang="tr">Referanslar</span>
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div class="bg-white bg-opacity-30 p-5 rounded-xl">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-pink-500 rounded-full flex items-center justify-center">
+                            <i class="fas fa-user text-white"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">John Doe</h4>
+                            <p class="text-xs text-gray-600" data-lang="en">Project Manager</p>
+                            <p class="text-xs text-gray-600 hidden" data-lang="tr">Proje Yöneticisi</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-1 mb-3">
+                        <i class="fas fa-star text-yellow-500"></i>
+                        <i class="fas fa-star text-yellow-500"></i>
+                        <i class="fas fa-star text-yellow-500"></i>
+                        <i class="fas fa-star text-yellow-500"></i>
+                        <i class="fas fa-star text-yellow-500"></i>
+                    </div>
+                    <p class="text-sm italic" data-lang="en">"Exceptional developer with strong technical skills. Delivered our project ahead of schedule with excellent code quality. Highly recommended for complex web applications."</p>
+                    <p class="text-sm italic hidden" data-lang="tr">"Güçlü teknik becerilere sahip olağanüstü bir geliştirici. Projemizi planlanandan önce mükemmel kod kalitesiyle teslim etti. Karmaşık web uygulamaları için şiddetle tavsiye edilir."</p>
+                </div>
+
+                <div class="bg-white bg-opacity-30 p-5 rounded-xl">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
+                            <i class="fas fa-user text-white"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Sarah Smith</h4>
+                            <p class="text-xs text-gray-600" data-lang="en">CEO, Tech Startup</p>
+                            <p class="text-xs text-gray-600 hidden" data-lang="tr">CEO, Teknoloji Startup</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-1 mb-3">
+                        <i class="fas fa-star text-yellow-500"></i>
+                        <i class="fas fa-star text-yellow-500"></i>
+                        <i class="fas fa-star text-yellow-500"></i>
+                        <i class="fas fa-star text-yellow-500"></i>
+                        <i class="fas fa-star text-yellow-500"></i>
+                    </div>
+                    <p class="text-sm italic" data-lang="en">"Great communication and problem-solving skills. Built our MVP from scratch and helped scale it to thousands of users. A true professional."</p>
+                    <p class="text-sm italic hidden" data-lang="tr">"Harika iletişim ve problem çözme becerileri. MVP'mizi sıfırdan inşa etti ve binlerce kullanıcıya ölçeklendirmemize yardımcı oldu. Gerçek bir profesyonel."</p>
+                </div>
+
+                <div class="bg-white bg-opacity-30 p-5 rounded-xl">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center">
+                            <i class="fas fa-user text-white"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Michael Chen</h4>
+                            <p class="text-xs text-gray-600" data-lang="en">Senior Developer</p>
+                            <p class="text-xs text-gray-600 hidden" data-lang="tr">Kıdemli Geliştirici</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-1 mb-3">
+                        <i class="fas fa-star text-yellow-500"></i>
+                        <i class="fas fa-star text-yellow-500"></i>
+                        <i class="fas fa-star text-yellow-500"></i>
+                        <i class="fas fa-star text-yellow-500"></i>
+                        <i class="fas fa-star text-yellow-500"></i>
+                    </div>
+                    <p class="text-sm italic" data-lang="en">"Outstanding work ethic and attention to detail. Their code is clean, well-documented, and maintainable. Would definitely work together again."</p>
+                    <p class="text-sm italic hidden" data-lang="tr">"Olağanüstü çalışma ahlakı ve detaylara dikkat. Kodları temiz, iyi belgelenmiş ve sürdürülebilir. Kesinlikle tekrar birlikte çalışırım."</p>
+                </div>
+
+                <div class="bg-white bg-opacity-30 p-5 rounded-xl">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center">
+                            <i class="fas fa-user text-white"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Emily Johnson</h4>
+                            <p class="text-xs text-gray-600" data-lang="en">Product Owner</p>
+                            <p class="text-xs text-gray-600 hidden" data-lang="tr">Ürün Sahibi</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-1 mb-3">
+                        <i class="fas fa-star text-yellow-500"></i>
+                        <i class="fas fa-star text-yellow-500"></i>
+                        <i class="fas fa-star text-yellow-500"></i>
+                        <i class="fas fa-star text-yellow-500"></i>
+                        <i class="fas fa-star text-yellow-500"></i>
+                    </div>
+                    <p class="text-sm italic" data-lang="en">"Highly skilled in both frontend and backend. Excellent at translating business requirements into technical solutions. A valuable team member."</p>
+                    <p class="text-sm italic hidden" data-lang="tr">"Hem frontend hem de backend konusunda son derece yetenekli. İş gereksinimlerini teknik çözümlere çevirmede mükemmel. Değerli bir takım üyesi."</p>
                 </div>
             </div>
         </div>
@@ -710,10 +891,23 @@
             statBoxes.forEach(box => observer.observe(box));
 
             themeToggle.addEventListener('click', () => {
-                currentTheme = currentTheme === 'light' ? 'dark' : 'light';
-                html.setAttribute('data-theme', currentTheme);
-                localStorage.setItem('theme', currentTheme);
-                themeToggle.querySelector('i').className = currentTheme === 'dark' ? 'fas fa-sun text-xl' : 'fas fa-moon text-xl';
+                const icon = themeToggle.querySelector('i');
+                
+                icon.style.transform = 'rotate(360deg) scale(0)';
+                icon.style.transition = 'transform 0.3s ease';
+                
+                setTimeout(() => {
+                    currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+                    html.setAttribute('data-theme', currentTheme);
+                    localStorage.setItem('theme', currentTheme);
+                    icon.className = currentTheme === 'dark' ? 'fas fa-sun text-xl' : 'fas fa-moon text-xl';
+                    
+                    if (typeof updateRadarChart === 'function') {
+                        updateRadarChart();
+                    }
+                    
+                    icon.style.transform = 'rotate(0deg) scale(1)';
+                }, 150);
                 
                 if (typeof gtag !== 'undefined') {
                     gtag('event', 'theme_change', {
@@ -971,10 +1165,182 @@
             return 'Just now';
         }
 
+        async function loadGitHubStats() {
+            const username = 'thislaex';
+            const statsContainer = document.getElementById('githubStatsContainer');
+            const languageContainer = document.getElementById('languageStatsContainer');
+            
+            try {
+                const [userResponse, reposResponse] = await Promise.all([
+                    fetch(`https://api.github.com/users/${username}`),
+                    fetch(`https://api.github.com/users/${username}/repos?per_page=100`)
+                ]);
+                
+                const userData = await userResponse.json();
+                const reposData = await reposResponse.json();
+                
+                if (userData.message === 'Not Found') {
+                    throw new Error('User not found');
+                }
+                
+                const totalStars = reposData.reduce((acc, repo) => acc + repo.stargazers_count, 0);
+                const totalForks = reposData.reduce((acc, repo) => acc + repo.forks_count, 0);
+                
+                const languages = {};
+                reposData.forEach(repo => {
+                    if (repo.language) {
+                        languages[repo.language] = (languages[repo.language] || 0) + 1;
+                    }
+                });
+                
+                const sortedLanguages = Object.entries(languages)
+                    .sort((a, b) => b[1] - a[1])
+                    .slice(0, 8);
+                
+                const languageColors = {
+                    'JavaScript': '#f7df1e',
+                    'TypeScript': '#3178c6',
+                    'Python': '#3776ab',
+                    'HTML': '#e34c26',
+                    'CSS': '#563d7c',
+                    'PHP': '#777bb4',
+                    'Java': '#b07219',
+                    'C++': '#f34b7d',
+                    'Go': '#00add8',
+                    'Rust': '#dea584',
+                    'C#': '#178600',
+                    'C': '#555555'
+                };
+                
+                const radarLanguages = sortedLanguages.slice(0, 8);
+                const radarData = {
+                    labels: radarLanguages.map(([lang]) => lang),
+                    values: radarLanguages.map(([, count]) => count)
+                };
+                
+                if (typeof initRadarChart === 'function') {
+                    initRadarChart(radarData);
+                }
+                
+                statsContainer.innerHTML = `
+                    <div class="bg-white bg-opacity-30 p-5 rounded-xl text-center">
+                        <div class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500 mb-2">${userData.public_repos}</div>
+                        <div class="text-sm font-semibold" data-lang="en">Public Repositories</div>
+                        <div class="text-sm font-semibold hidden" data-lang="tr">Açık Repo</div>
+                    </div>
+                    <div class="bg-white bg-opacity-30 p-5 rounded-xl text-center">
+                        <div class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-blue-500 mb-2">${userData.followers}</div>
+                        <div class="text-sm font-semibold" data-lang="en">Followers</div>
+                        <div class="text-sm font-semibold hidden" data-lang="tr">Takipçi</div>
+                    </div>
+                    <div class="bg-white bg-opacity-30 p-5 rounded-xl text-center">
+                        <div class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500 mb-2">${totalStars}</div>
+                        <div class="text-sm font-semibold" data-lang="en">Total Stars</div>
+                        <div class="text-sm font-semibold hidden" data-lang="tr">Toplam Yıldız</div>
+                    </div>
+                    <div class="bg-white bg-opacity-30 p-5 rounded-xl text-center">
+                        <div class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500 mb-2">${totalForks}</div>
+                        <div class="text-sm font-semibold" data-lang="en">Total Forks</div>
+                        <div class="text-sm font-semibold hidden" data-lang="tr">Toplam Fork</div>
+                    </div>
+                `;
+                
+                languageContainer.innerHTML = sortedLanguages.map(([lang, count]) => {
+                    const color = languageColors[lang] || '#6b7280';
+                    return `
+                        <div class="bg-white bg-opacity-30 p-3 rounded-lg">
+                            <div class="flex items-center gap-2 mb-1">
+                                <div class="w-3 h-3 rounded-full" style="background-color: ${color}"></div>
+                                <span class="text-sm font-semibold">${lang}</span>
+                            </div>
+                            <div class="text-xs text-gray-600">${count} ${currentLang === 'en' ? 'repos' : 'repo'}</div>
+                        </div>
+                    `;
+                }).join('');
+                
+                switchLanguage(currentLang);
+            } catch (error) {
+                statsContainer.innerHTML = `
+                    <div class="col-span-full text-center py-8">
+                        <i class="fas fa-exclamation-triangle text-4xl text-red-500 mb-3"></i>
+                        <p class="text-gray-600" data-lang="en">Unable to load GitHub statistics.</p>
+                        <p class="text-gray-600 hidden" data-lang="tr">GitHub istatistikleri yüklenemiyor.</p>
+                    </div>
+                `;
+                switchLanguage(currentLang);
+            }
+        }
+
         loadGitHubProjects();
         loadGitHubActivity();
+        loadGitHubStats();
 
-        // Register Service Worker for PWA
+        let radarChart;
+        const radarCtx = document.getElementById('radarChart').getContext('2d');
+
+        window.initRadarChart = function(languageData) {
+            const isDark = currentTheme === 'dark';
+            
+            if (radarChart) {
+                radarChart.destroy();
+            }
+            
+            radarChart = new Chart(radarCtx, {
+                type: 'radar',
+                data: {
+                    labels: languageData.labels,
+                    datasets: [{
+                        label: 'Repository Count',
+                        data: languageData.values,
+                        fill: true,
+                        backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                        borderColor: 'rgb(59, 130, 246)',
+                        pointBackgroundColor: 'rgb(236, 72, 153)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgb(236, 72, 153)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    scales: {
+                        r: {
+                            beginAtZero: true,
+                            ticks: {
+                                stepSize: 1,
+                                color: isDark ? '#9ca3af' : '#374151'
+                            },
+                            grid: {
+                                color: isDark ? 'rgba(156, 163, 175, 0.2)' : 'rgba(55, 65, 81, 0.2)'
+                            },
+                            pointLabels: {
+                                color: isDark ? '#e5e7eb' : '#1f2937',
+                                font: {
+                                    size: 12,
+                                    weight: 'bold'
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        };
+
+        window.updateRadarChart = function() {
+            if (!radarChart) return;
+            const isDark = currentTheme === 'dark';
+            radarChart.options.scales.r.ticks.color = isDark ? '#9ca3af' : '#374151';
+            radarChart.options.scales.r.grid.color = isDark ? 'rgba(156, 163, 175, 0.2)' : 'rgba(55, 65, 81, 0.2)';
+            radarChart.options.scales.r.pointLabels.color = isDark ? '#e5e7eb' : '#1f2937';
+            radarChart.update();
+        };
+
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('/service-worker.js')
