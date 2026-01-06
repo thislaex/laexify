@@ -14,12 +14,84 @@
     <meta name="twitter:description" content="Full Stack Developer specializing in Backend development.">
     <title>Laexify - Full Stack Developer Portfolio</title>
     <link rel="icon" type="image/x-icon" href="cdn/img/favicon.ico">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#3b82f6">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Laexify">
+    
+    <link rel="preload" href="cdn/assets/css/styles.css" as="style">
+    <link rel="preload" href="cdn/img/profile.webp" as="image">
+    <link rel="preconnect" href="https://api.github.com" crossorigin>
+    <link rel="dns-prefetch" href="https://api.github.com">
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Laexify",
+      "jobTitle": "Full Stack Developer",
+      "description": "Full Stack Developer specializing in Backend development, Internet and Network Technologies student with expertise in modern web technologies.",
+      "url": "https://laexify.com",
+      "sameAs": [
+        "https://github.com/thislaex",
+        "https://instagram.com/Laexify",
+        "https://linkedin.com/in/yourprofile"
+      ],
+      "knowsAbout": [
+        "JavaScript",
+        "TypeScript",
+        "React",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "MySQL",
+        "PostgreSQL",
+        "Python",
+        "PHP",
+        "Backend Development",
+        "Frontend Development",
+        "Network Technologies",
+        "Web Development"
+      ],
+      "alumniOf": {
+        "@type": "EducationalOrganization",
+        "name": "Internet and Network Technologies"
+      }
+    }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="cdn/assets/css/styles.css">
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX', {
+            'anonymize_ip': true,
+            'send_page_view': true
+        });
+        
+        window.addEventListener('load', () => {
+            if (window.performance && typeof gtag !== 'undefined') {
+                const perfData = window.performance.timing;
+                const pageLoadTime = perfData.loadEventEnd - perfData.navigationStart;
+                const connectTime = perfData.responseEnd - perfData.requestStart;
+                const renderTime = perfData.domComplete - perfData.domLoading;
+                
+                gtag('event', 'timing_complete', {
+                    name: 'page_load',
+                    value: pageLoadTime,
+                    event_category: 'Performance'
+                });
+            }
+        });
+    </script>
 </head>
 <body class="bg-gray-100 text-gray-800 flex flex-col items-center justify-center min-h-screen relative transition-colors duration-300">
     <div class="bg-blur"></div>
@@ -36,11 +108,10 @@
         </a>
     </div>
 
-    <!-- Main Content -->
     <main class="text-center fade-in bg-white bg-opacity-85 p-4 sm:p-6 md:p-10 rounded-2xl shadow-2xl w-11/12 lg:w-3/4 xl:w-1/2 flex flex-col justify-center relative z-10 backdrop-blur-md border border-white border-opacity-20">
         <div class="flex flex-col items-center text-center gap-2 md:gap-3">
             <div class="profile-ring">
-                <img alt="pfp.png" src="cdn/img/profile.webp" draggable="false" class="profile-img rounded-full" width="128">
+                <img alt="pfp.png" src="cdn/img/profile.webp" draggable="false" class="profile-img rounded-full" width="128" loading="lazy">
             </div>
             <div class="flex flex-col sm:flex-row items-center gap-3">
                 <span class="titleText font-bold text-4xl sm:text-5xl md:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500">Laexify</span>
@@ -101,16 +172,16 @@
 
         <div class="flex flex-row items-end justify-center my-3 md:my-5 gap-3 md:gap-4">
             <a class="social-link select-none duration-500 ease-out hover:-translate-y-2" href="https://github.com/thislaex" target="_blank" rel="noopener noreferrer">
-                <img src="cdn/img/github-original.svg" alt="GitHub" width="42" class="select-none hover:scale-110 hover:opacity-75 transition-transform duration-300">
+                <img src="cdn/img/github-original.svg" alt="GitHub" width="42" class="select-none hover:scale-110 hover:opacity-75 transition-transform duration-300" loading="lazy">
             </a>
             <a class="social-link select-none duration-500 ease-out hover:-translate-y-2" href="https://instagram.com/Laexify" target="_blank" rel="noopener noreferrer">
-                <img src="cdn/img/instagram_logo.svg" alt="Instagram" width="42" class="select-none hover:scale-110 hover:opacity-75 transition-transform duration-300">
+                <img src="cdn/img/instagram_logo.svg" alt="Instagram" width="42" class="select-none hover:scale-110 hover:opacity-75 transition-transform duration-300" loading="lazy">
             </a>
             <a class="social-link select-none duration-500 ease-out hover:-translate-y-2" href="https://discord.com/users/yourID" target="_blank" rel="noopener noreferrer">
-                <img src="cdn/img/discord-original.svg" alt="Discord" width="42" class="select-none hover:scale-110 hover:opacity-75 transition-transform duration-300">
+                <img src="cdn/img/discord-original.svg" alt="Discord" width="42" class="select-none hover:scale-110 hover:opacity-75 transition-transform duration-300" loading="lazy">
             </a>
             <a class="social-link select-none duration-500 ease-out hover:-translate-y-2" href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">
-                <img src="cdn/img/linkedin-original.svg" alt="LinkedIn" width="42" class="select-none hover:scale-110 hover:opacity-75 transition-transform duration-300">
+                <img src="cdn/img/linkedin-original.svg" alt="LinkedIn" width="42" class="select-none hover:scale-110 hover:opacity-75 transition-transform duration-300" loading="lazy">
             </a>
         </div>
 
@@ -253,79 +324,79 @@
                 <span class="hidden" data-lang="tr">Kullandığım Teknolojiler</span>
             </h3>
             <div class="icon-container">
-                <img src="cdn/img/html5-original.svg" alt="HTML5" class="tech-icon w-10 h-10 sm:w-12 sm:h-12">
+                <img src="cdn/img/html5-original.svg" alt="HTML5" class="tech-icon w-10 h-10 sm:w-12 sm:h-12" loading="lazy">
                 <span class="tooltip">HTML5</span>
             </div>
             <div class="icon-container">
-                <img src="cdn/img/javascript-original.svg" alt="JavaScript" class="tech-icon w-10 h-10 sm:w-12 sm:h-12">
+                <img src="cdn/img/javascript-original.svg" alt="JavaScript" class="tech-icon w-10 h-10 sm:w-12 sm:h-12" loading="lazy">
                 <span class="tooltip">JavaScript</span>
             </div>
             <div class="icon-container">
-                <img src="cdn/img/typescript-original.svg" alt="TypeScript" class="tech-icon w-10 h-10 sm:w-12 sm:h-12">
+                <img src="cdn/img/typescript-original.svg" alt="TypeScript" class="tech-icon w-10 h-10 sm:w-12 sm:h-12" loading="lazy">
                 <span class="tooltip">TypeScript</span>
             </div>
             <div class="icon-container">
-                <img src="cdn/img/react-original.svg" alt="React" class="tech-icon w-10 h-10 sm:w-12 sm:h-12">
+                <img src="cdn/img/react-original.svg" alt="React" class="tech-icon w-10 h-10 sm:w-12 sm:h-12" loading="lazy">
                 <span class="tooltip">React</span>
             </div>
             <div class="icon-container">
-                <img src="cdn/img/nodejs-original.svg" alt="Node.js" class="tech-icon w-10 h-10 sm:w-12 sm:h-12">
+                <img src="cdn/img/nodejs-original.svg" alt="Node.js" class="tech-icon w-10 h-10 sm:w-12 sm:h-12" loading="lazy">
                 <span class="tooltip">Node.js</span>
             </div>
             <div class="icon-container">
-                <img src="cdn/img/express-original.svg" alt="Express.js" class="tech-icon w-10 h-10 sm:w-12 sm:h-12">
+                <img src="cdn/img/express-original.svg" alt="Express.js" class="tech-icon w-10 h-10 sm:w-12 sm:h-12" loading="lazy">
                 <span class="tooltip">Express.js</span>
             </div>
             <div class="icon-container">
-                <img src="cdn/img/mongodb-original.svg" alt="MongoDB" class="tech-icon w-10 h-10 sm:w-12 sm:h-12">
+                <img src="cdn/img/mongodb-original.svg" alt="MongoDB" class="tech-icon w-10 h-10 sm:w-12 sm:h-12" loading="lazy">
                 <span class="tooltip">MongoDB</span>
             </div>
             <div class="icon-container">
-                <img src="cdn/img/mysql-original.svg" alt="MySQL" class="tech-icon w-10 h-10 sm:w-12 sm:h-12">
+                <img src="cdn/img/mysql-original.svg" alt="MySQL" class="tech-icon w-10 h-10 sm:w-12 sm:h-12" loading="lazy">
                 <span class="tooltip">MySQL</span>
             </div>
             <div class="icon-container">
-                <img src="cdn/img/postgresql-original.svg" alt="PostgreSQL" class="tech-icon w-10 h-10 sm:w-12 sm:h-12">
+                <img src="cdn/img/postgresql-original.svg" alt="PostgreSQL" class="tech-icon w-10 h-10 sm:w-12 sm:h-12" loading="lazy">
                 <span class="tooltip">PostgreSQL</span>
             </div>
             <div class="icon-container">
-                <img src="cdn/img/python-original.svg" alt="Python" class="tech-icon w-10 h-10 sm:w-12 sm:h-12">
+                <img src="cdn/img/python-original.svg" alt="Python" class="tech-icon w-10 h-10 sm:w-12 sm:h-12" loading="lazy">
                 <span class="tooltip">Python</span>
             </div>
             <div class="icon-container">
-                <img src="cdn/img/php-original.svg" alt="PHP" class="tech-icon w-10 h-10 sm:w-12 sm:h-12">
+                <img src="cdn/img/php-original.svg" alt="PHP" class="tech-icon w-10 h-10 sm:w-12 sm:h-12" loading="lazy">
                 <span class="tooltip">PHP</span>
             </div>
             <div class="icon-container">
-                <img src="cdn/img/bootstrap-plain.svg" alt="Bootstrap" class="tech-icon w-10 h-10 sm:w-12 sm:h-12">
+                <img src="cdn/img/bootstrap-plain.svg" alt="Bootstrap" class="tech-icon w-10 h-10 sm:w-12 sm:h-12" loading="lazy">
                 <span class="tooltip">Bootstrap</span>
             </div>
             <div class="icon-container">
-                <img src="cdn/img/tailwindcss-plain.svg" alt="Tailwind CSS" class="tech-icon w-10 h-10 sm:w-12 sm:h-12">
+                <img src="cdn/img/tailwindcss-plain.svg" alt="Tailwind CSS" class="tech-icon w-10 h-10 sm:w-12 sm:h-12" loading="lazy">
                 <span class="tooltip">Tailwind CSS</span>
             </div>
             <div class="icon-container">
-                <img src="cdn/img/git-original.svg" alt="Git" class="tech-icon w-10 h-10 sm:w-12 sm:h-12">
+                <img src="cdn/img/git-original.svg" alt="Git" class="tech-icon w-10 h-10 sm:w-12 sm:h-12" loading="lazy">
                 <span class="tooltip">Git</span>
             </div>
             <div class="icon-container">
-                <img src="cdn/img/github-original.svg" alt="GitHub" class="tech-icon w-10 h-10 sm:w-12 sm:h-12">
+                <img src="cdn/img/github-original.svg" alt="GitHub" class="tech-icon w-10 h-10 sm:w-12 sm:h-12" loading="lazy">
                 <span class="tooltip">GitHub</span>
             </div>
             <div class="icon-container">
-                <img src="cdn/img/docker-original.svg" alt="Docker" class="tech-icon w-10 h-10 sm:w-12 sm:h-12">
+                <img src="cdn/img/docker-original.svg" alt="Docker" class="tech-icon w-10 h-10 sm:w-12 sm:h-12" loading="lazy">
                 <span class="tooltip">Docker</span>
             </div>
             <div class="icon-container">
-                <img src="cdn/img/linux-original.svg" alt="Linux" class="tech-icon w-10 h-10 sm:w-12 sm:h-12">
+                <img src="cdn/img/linux-original.svg" alt="Linux" class="tech-icon w-10 h-10 sm:w-12 sm:h-12" loading="lazy">
                 <span class="tooltip">Linux</span>
             </div>
             <div class="icon-container">
-                <img src="cdn/img/vscode-original.svg" alt="VS Code" class="tech-icon w-10 h-10 sm:w-12 sm:h-12">
+                <img src="cdn/img/vscode-original.svg" alt="VS Code" class="tech-icon w-10 h-10 sm:w-12 sm:h-12" loading="lazy">
                 <span class="tooltip">VS Code</span>
             </div>
             <div class="icon-container">
-                <img src="cdn/img/androidstudio-original.svg" alt="Android Studio" class="tech-icon w-10 h-10 sm:w-12 sm:h-12">
+                <img src="cdn/img/androidstudio-original.svg" alt="Android Studio" class="tech-icon w-10 h-10 sm:w-12 sm:h-12" loading="lazy">
                 <span class="tooltip">Android Studio</span>
             </div>
         </div>
@@ -456,7 +527,7 @@
             <div class="grid grid-cols-1 gap-4 sm:gap-5 mb-6">
                 <div class="blog-card bg-white bg-opacity-30 p-4 sm:p-5 rounded-xl hover:shadow-xl transition-all duration-300">
                     <div class="mb-3">
-                        <img src="https://placehold.co/400x200" alt="Blog Cover" class="w-full h-40 object-cover rounded-lg">
+                        <img src="https://placehold.co/400x200" alt="Blog Cover" class="w-full h-40 object-cover rounded-lg" loading="lazy">
                     </div>
                     <div class="flex items-center gap-2 mb-3">
                         <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-xs font-semibold">Web Development</span>
@@ -478,7 +549,7 @@
 
                 <div class="blog-card bg-white bg-opacity-30 p-4 sm:p-5 rounded-xl hover:shadow-xl transition-all duration-300">
                     <div class="mb-3">
-                        <img src="https://placehold.co/400x200" alt="Blog Cover" class="w-full h-40 object-cover rounded-lg">
+                        <img src="https://placehold.co/400x200" alt="Blog Cover" class="w-full h-40 object-cover rounded-lg" loading="lazy">
                     </div>
                     <div class="flex items-center gap-2 mb-3">
                         <span class="px-3 py-1 bg-pink-100 text-pink-600 rounded-full text-xs font-semibold">Backend</span>
@@ -500,7 +571,7 @@
 
                 <div class="blog-card bg-white bg-opacity-30 p-4 sm:p-5 rounded-xl hover:shadow-xl transition-all duration-300">
                     <div class="mb-3">
-                        <img src="https://placehold.co/400x200" alt="Blog Cover" class="w-full h-40 object-cover rounded-lg">
+                        <img src="https://placehold.co/400x200" alt="Blog Cover" class="w-full h-40 object-cover rounded-lg" loading="lazy">
                     </div>
                     <div class="flex items-center gap-2 mb-3">
                         <span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-xs font-semibold">API</span>
@@ -522,7 +593,7 @@
 
                 <div class="blog-card bg-white bg-opacity-30 p-4 sm:p-5 rounded-xl hover:shadow-xl transition-all duration-300">
                     <div class="mb-3">
-                        <img src="https://placehold.co/400x200" alt="Blog Cover" class="w-full h-40 object-cover rounded-lg">
+                        <img src="https://placehold.co/400x200" alt="Blog Cover" class="w-full h-40 object-cover rounded-lg" loading="lazy">
                     </div>
                     <div class="flex items-center gap-2 mb-3">
                         <span class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-xs font-semibold">Security</span>
@@ -643,18 +714,40 @@
                 html.setAttribute('data-theme', currentTheme);
                 localStorage.setItem('theme', currentTheme);
                 themeToggle.querySelector('i').className = currentTheme === 'dark' ? 'fas fa-sun text-xl' : 'fas fa-moon text-xl';
+                
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'theme_change', {
+                        event_category: 'engagement',
+                        event_label: currentTheme
+                    });
+                }
             });
 
             langToggle.addEventListener('click', () => {
                 currentLang = currentLang === 'en' ? 'tr' : 'en';
                 switchLanguage(currentLang);
                 localStorage.setItem('lang', currentLang);
+                
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'language_change', {
+                        event_category: 'engagement',
+                        event_label: currentLang
+                    });
+                }
             });
 
             setupFilterButtons();
 
             contactForm.addEventListener('submit', (e) => {
                 e.preventDefault();
+                
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'form_submission', {
+                        event_category: 'engagement',
+                        event_label: 'Contact Form'
+                    });
+                }
+                
                 alert(currentLang === 'en' ? 'Message sent successfully!' : 'Mesaj başarıyla gönderildi!');
                 contactForm.reset();
             });
@@ -881,7 +974,51 @@
         loadGitHubProjects();
         loadGitHubActivity();
 
-        // Custom Cursor Effect
+        // Register Service Worker for PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then((registration) => {
+                        console.log('SW registered:', registration.scope);
+                    })
+                    .catch((error) => {
+                        console.log('SW registration failed:', error);
+                    });
+            });
+        }
+
+        
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            
+            
+            console.log('💡 PWA installation available');
+            
+            
+            setTimeout(() => {
+                if (deferredPrompt) {
+                    deferredPrompt.prompt();
+                    deferredPrompt.userChoice.then((choiceResult) => {
+                        if (choiceResult.outcome === 'accepted') {
+                            console.log('✅ User accepted PWA installation');
+                        }
+                        deferredPrompt = null;
+                    });
+                }
+            }, 30000);
+        });
+
+        window.addEventListener('appinstalled', () => {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'pwa_install', {
+                    event_category: 'engagement',
+                    event_label: 'PWA Installation'
+                });
+            }
+        });
+
         const cursor = document.createElement('div');
         cursor.className = 'custom-cursor';
         document.body.appendChild(cursor);
@@ -898,14 +1035,12 @@
             cursorDot.style.top = e.clientY + 'px';
         });
 
-        // Add hover effect for cursor
         const hoverElements = document.querySelectorAll('a, button, .tech-icon, .social-link, .project-filter-btn');
         hoverElements.forEach(el => {
             el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
             el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
         });
 
-        // Parallax Background Effect
         const bgBlur = document.querySelector('.bg-blur');
         let ticking = false;
 
@@ -923,3 +1058,7 @@
     </script>
 </body>
 </html>
+
+
+
+
