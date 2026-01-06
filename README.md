@@ -1,6 +1,6 @@
 # Önizleme
 
-<img src="https://i.imgur.com/zFVETsH.png">
+<img src="https://i.imgur.com/9T2yTWW.png">
 
 ## Düzenleme
 
