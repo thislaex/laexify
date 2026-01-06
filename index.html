@@ -97,15 +97,67 @@
 <body class="bg-gray-100 text-gray-800 flex flex-col items-center justify-center min-h-screen relative transition-colors duration-300">
     <div class="bg-blur"></div>
 
-    <div class="fixed top-6 right-6 z-50 flex gap-3">
-        <button id="themeToggle" class="bg-white bg-opacity-20 backdrop-blur-md p-3 rounded-full shadow-lg hover:scale-110 transition-all duration-300 border border-white border-opacity-30">
-            <i class="fas fa-moon text-xl"></i>
+    <div class="fixed top-6 left-6 z-50 md:hidden">
+        <button id="hamburgerToggle" class="bg-white bg-opacity-20 backdrop-blur-md p-3 rounded-full shadow-lg hover:scale-110 transition-all duration-300 border border-white border-opacity-30">
+            <div class="hamburger-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </button>
-        <button id="langToggle" class="bg-white bg-opacity-20 backdrop-blur-md px-4 py-3 rounded-full shadow-lg hover:scale-110 transition-all duration-300 border border-white border-opacity-30 font-semibold">
+    </div>
+
+    <div id="mobileMenu" class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md z-40 hidden md:hidden transition-all duration-300">
+        <div class="mobile-menu-content bg-white w-4/5 max-w-sm h-full shadow-2xl transform -translate-x-full transition-transform duration-300">
+            <div class="p-6">
+                <div class="flex items-center gap-3 mb-8 pb-4 border-b border-gray-300">
+                    <img src="cdn/img/profile.webp" alt="Profile" class="w-12 h-12 rounded-full" loading="lazy">
+                    <div>
+                        <h3 class="font-bold text-lg">Laexify</h3>
+                        <p class="text-xs text-gray-600" data-lang="en">Full Stack Developer</p>
+                        <p class="text-xs text-gray-600 hidden" data-lang="tr">Full Stack Geliştirici</p>
+                    </div>
+                </div>
+                <nav class="space-y-3">
+                    <a href="#about" class="mobile-menu-link flex items-center gap-3 p-3 rounded-lg hover:bg-blue-50 transition-colors">
+                        <i class="fas fa-user text-blue-500 w-6"></i>
+                        <span data-lang="en">About</span>
+                        <span class="hidden" data-lang="tr">Hakkımda</span>
+                    </a>
+                    <a href="#skills" class="mobile-menu-link flex items-center gap-3 p-3 rounded-lg hover:bg-blue-50 transition-colors">
+                        <i class="fas fa-code text-green-500 w-6"></i>
+                        <span data-lang="en">Skills</span>
+                        <span class="hidden" data-lang="tr">Yetenekler</span>
+                    </a>
+                    <a href="#projects" class="mobile-menu-link flex items-center gap-3 p-3 rounded-lg hover:bg-blue-50 transition-colors">
+                        <i class="fas fa-folder text-purple-500 w-6"></i>
+                        <span data-lang="en">Projects</span>
+                        <span class="hidden" data-lang="tr">Projeler</span>
+                    </a>
+                    <a href="#blog" class="mobile-menu-link flex items-center gap-3 p-3 rounded-lg hover:bg-blue-50 transition-colors">
+                        <i class="fas fa-blog text-pink-500 w-6"></i>
+                        <span data-lang="en">Blog</span>
+                        <span class="hidden" data-lang="tr">Blog</span>
+                    </a>
+                    <a href="#contact" class="mobile-menu-link flex items-center gap-3 p-3 rounded-lg hover:bg-blue-50 transition-colors">
+                        <i class="fas fa-envelope text-orange-500 w-6"></i>
+                        <span data-lang="en">Contact</span>
+                        <span class="hidden" data-lang="tr">İletişim</span>
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed top-6 right-6 z-50 flex flex-col md:flex-row gap-2 md:gap-3">
+        <button id="themeToggle" class="bg-white bg-opacity-20 backdrop-blur-md p-2 md:p-3 rounded-full shadow-lg hover:scale-110 transition-all duration-300 border border-white border-opacity-30">
+            <i class="fas fa-moon text-lg md:text-xl"></i>
+        </button>
+        <button id="langToggle" class="bg-white bg-opacity-20 backdrop-blur-md px-3 py-2 md:px-4 md:py-3 rounded-full shadow-lg hover:scale-110 transition-all duration-300 border border-white border-opacity-30 font-semibold text-sm md:text-base">
             EN
         </button>
-        <a href="cdn/cv.pdf" download class="bg-white bg-opacity-20 backdrop-blur-md p-3 rounded-full shadow-lg hover:scale-110 transition-all duration-300 border border-white border-opacity-30" title="Download CV">
-            <i class="fas fa-download text-xl"></i>
+        <a href="cdn/cv.pdf" download class="bg-white bg-opacity-20 backdrop-blur-md p-2 md:p-3 rounded-full shadow-lg hover:scale-110 transition-all duration-300 border border-white border-opacity-30" title="Download CV">
+            <i class="fas fa-download text-lg md:text-xl"></i>
         </a>
     </div>
 
@@ -186,7 +238,7 @@
             </a>
         </div>
 
-        <div class="mt-6 sm:mt-8 p-4 sm:p-6 bg-white bg-opacity-15 rounded-xl backdrop-blur-sm">
+        <div id="skills" class="mt-6 sm:mt-8 p-4 sm:p-6 bg-white bg-opacity-15 rounded-xl backdrop-blur-sm">
             <h3 class="text-xl sm:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500 mb-4 sm:mb-6">
                 <span data-lang="en">Skills & Expertise</span>
                 <span class="hidden" data-lang="tr">Yetenekler & Uzmanlık</span>
@@ -231,7 +283,7 @@
             </div>
         </div>
 
-        <div class="mt-6 sm:mt-8 p-4 sm:p-6 bg-white bg-opacity-15 rounded-xl backdrop-blur-sm">
+        <div id="about" class="mt-6 sm:mt-8 p-4 sm:p-6 bg-white bg-opacity-15 rounded-xl backdrop-blur-sm">
             <h3 class="text-xl sm:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500 mb-4 sm:mb-6 text-center">
                 <span data-lang="en">About Me</span>
                 <span class="hidden" data-lang="tr">Hakkımda</span>
@@ -484,7 +536,7 @@
             </div>
         </div>
 
-        <div class="mt-6 sm:mt-8 p-4 sm:p-6 bg-white bg-opacity-15 rounded-xl backdrop-blur-sm">
+        <div id="projects" class="mt-6 sm:mt-8 p-4 sm:p-6 bg-white bg-opacity-15 rounded-xl backdrop-blur-sm">
             <h3 class="text-xl sm:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500 mb-4 sm:mb-6 text-center">
                 <span data-lang="en">Featured Projects</span>
                 <span class="hidden" data-lang="tr">Öne Çıkan Projeler</span>
@@ -700,7 +752,7 @@
             </div>
         </div>
 
-        <div class="mt-6 sm:mt-8 p-4 sm:p-6 bg-white bg-opacity-15 rounded-xl backdrop-blur-sm">
+        <div id="blog" class="mt-6 sm:mt-8 p-4 sm:p-6 bg-white bg-opacity-15 rounded-xl backdrop-blur-sm">
             <h3 class="text-xl sm:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500 mb-4 sm:mb-6 text-center">
                 <span data-lang="en">Latest Articles & Blog</span>
                 <span class="hidden" data-lang="tr">Son Yazılar & Blog</span>
@@ -804,7 +856,32 @@
         </div>
     </main>
 
-    <footer class="bg-white bg-opacity-90 w-full py-8 mt-10 shadow-lg relative z-10">
+    <div id="bottomNav" class="fixed bottom-0 left-0 right-0 bg-white bg-opacity-95 backdrop-blur-md shadow-2xl z-50 md:hidden border-t border-gray-200">
+        <div class="flex justify-around items-center py-3">
+            <a href="#" class="bottom-nav-item flex flex-col items-center gap-1 px-4 py-2 transition-all duration-300 active">
+                <i class="fas fa-home text-xl"></i>
+                <span class="text-xs font-medium" data-lang="en">Home</span>
+                <span class="text-xs font-medium hidden" data-lang="tr">Ana Sayfa</span>
+            </a>
+            <a href="#projects" class="bottom-nav-item flex flex-col items-center gap-1 px-4 py-2 transition-all duration-300">
+                <i class="fas fa-folder text-xl"></i>
+                <span class="text-xs font-medium" data-lang="en">Projects</span>
+                <span class="text-xs font-medium hidden" data-lang="tr">Projeler</span>
+            </a>
+            <a href="#blog" class="bottom-nav-item flex flex-col items-center gap-1 px-4 py-2 transition-all duration-300">
+                <i class="fas fa-blog text-xl"></i>
+                <span class="text-xs font-medium" data-lang="en">Blog</span>
+                <span class="text-xs font-medium hidden" data-lang="tr">Blog</span>
+            </a>
+            <a href="#contact" class="bottom-nav-item flex flex-col items-center gap-1 px-4 py-2 transition-all duration-300">
+                <i class="fas fa-envelope text-xl"></i>
+                <span class="text-xs font-medium" data-lang="en">Contact</span>
+                <span class="text-xs font-medium hidden" data-lang="tr">İletişim</span>
+            </a>
+        </div>
+    </div>
+
+    <footer id="contact" class="bg-white bg-opacity-90 w-full py-8 mt-10 mb-16 md:mb-0 shadow-lg relative z-10">
         <div class="container mx-auto px-4 md:px-8 lg:px-16">
             <h2 class="text-lg font-semibold text-center">
                 <span data-lang="en">Get In Touch</span>
@@ -846,6 +923,11 @@
             const langToggle = document.getElementById('langToggle');
             const html = document.documentElement;
             const contactForm = document.getElementById('contactForm');
+            const hamburgerToggle = document.getElementById('hamburgerToggle');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileMenuContent = mobileMenu?.querySelector('.mobile-menu-content');
+            const bottomNavItems = document.querySelectorAll('.bottom-nav-item');
+            const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
             
             const savedTheme = localStorage.getItem('theme') || 'light';
             const savedLang = localStorage.getItem('lang') || 'en';
@@ -945,6 +1027,96 @@
                 alert(currentLang === 'en' ? 'Message sent successfully!' : 'Mesaj başarıyla gönderildi!');
                 contactForm.reset();
             });
+
+            if (hamburgerToggle && mobileMenu) {
+                hamburgerToggle.addEventListener('click', () => {
+                    const isOpen = !mobileMenu.classList.contains('hidden');
+                    
+                    if (isOpen) {
+                        mobileMenuContent.style.transform = 'translateX(-100%)';
+                        setTimeout(() => {
+                            mobileMenu.classList.add('hidden');
+                        }, 300);
+                        hamburgerToggle.classList.remove('active');
+                    } else {
+                        mobileMenu.classList.remove('hidden');
+                        setTimeout(() => {
+                            mobileMenuContent.style.transform = 'translateX(0)';
+                        }, 10);
+                        hamburgerToggle.classList.add('active');
+                    }
+                });
+
+                mobileMenu.addEventListener('click', (e) => {
+                    if (e.target === mobileMenu) {
+                        mobileMenuContent.style.transform = 'translateX(-100%)';
+                        setTimeout(() => {
+                            mobileMenu.classList.add('hidden');
+                        }, 300);
+                        hamburgerToggle.classList.remove('active');
+                    }
+                });
+
+                mobileMenuLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenuContent.style.transform = 'translateX(-100%)';
+                        setTimeout(() => {
+                            mobileMenu.classList.add('hidden');
+                        }, 300);
+                        hamburgerToggle.classList.remove('active');
+                    });
+                });
+            }
+
+            bottomNavItems.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    bottomNavItems.forEach(i => i.classList.remove('active'));
+                    item.classList.add('active');
+                });
+            });
+
+            let touchStartX = 0;
+            let touchEndX = 0;
+            let touchStartY = 0;
+            let touchEndY = 0;
+
+            document.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+                touchStartY = e.changedTouches[0].screenY;
+            });
+
+            document.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                touchEndY = e.changedTouches[0].screenY;
+                handleGesture();
+            });
+
+            function handleGesture() {
+                const diffX = touchEndX - touchStartX;
+                const diffY = touchEndY - touchStartY;
+                
+                if (Math.abs(diffX) > Math.abs(diffY)) {
+                    if (Math.abs(diffX) > 100) {
+                        if (diffX > 0) {
+                            if (window.innerWidth < 768 && mobileMenu.classList.contains('hidden')) {
+                                hamburgerToggle.click();
+                            }
+                        } else {
+                            if (window.innerWidth < 768 && !mobileMenu.classList.contains('hidden')) {
+                                hamburgerToggle.click();
+                            }
+                        }
+                    }
+                } else {
+                    if (Math.abs(diffY) > 150) {
+                        if (diffY < 0) {
+                            window.scrollBy({ top: 300, behavior: 'smooth' });
+                        } else {
+                            window.scrollBy({ top: -300, behavior: 'smooth' });
+                        }
+                    }
+                }
+            }
         });
 
         function animateCounter(element, target) {
