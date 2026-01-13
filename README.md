@@ -177,7 +177,7 @@ Modern, responsive ve performans odaklı karanlık mod destekli portföy şablon
 
 ## Önizleme
 
-<img src="https://i.imgur.com/9T2yTWW.png">
+<img src="https://i.imgur.com/QPsjGH0.png">
 
 ## Özellikler
 
