@@ -13,7 +13,7 @@ Modern, responsive and performance-optimized portfolio template with dark mode s
 
 ## Preview
 
-<img src="https://i.imgur.com/9T2yTWW.png">
+<img src="https://i.imgur.com/QPsjGH0.png">
 
 ## Features
 
