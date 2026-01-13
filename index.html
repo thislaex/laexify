@@ -16,13 +16,19 @@
     <link rel="icon" type="image/x-icon" href="cdn/img/favicon.ico">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#3b82f6">
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Laexify">
     
     <link rel="preload" href="cdn/assets/css/styles.css" as="style">
     <link rel="preload" href="cdn/img/profile.webp" as="image">
-    <link rel="preconnect" href="https://api.github.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="dns-prefetch" href="https://api.github.com">
     
     <script type="application/ld+json">
@@ -60,16 +66,26 @@
       }
     }
     </script>
+    <style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background-color:#f3f4f6;color:#1f2937;transition:background-color .3s ease,color .3s ease;min-height:100vh}.bg-blur{position:fixed;top:0;left:0;width:100%;height:100%;background:url(cdn/img/bg.gif) center/cover;filter:blur(10px);opacity:.3;z-index:-1;will-change:transform;transform:translate3d(0,0,0)}.fade-in{opacity:1;transform:translateY(0)}.profile-ring{background:linear-gradient(45deg,#3b82f6,#ec4899);padding:4px;border-radius:50%;display:inline-block}.profile-img{width:128px;height:128px}main{min-height:600px}@font-face{font-family:'Font Awesome 6 Free';font-display:swap}@font-face{font-family:'Font Awesome 6 Brands';font-display:swap}@font-face{font-family:'Inter';font-display:swap}</style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" media="print" onload="this.media='all'">
+    <link rel="preload" href="cdn/assets/css/styles.css" as="style">
     <link rel="stylesheet" href="cdn/assets/css/styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"></noscript>
     
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script>
+        // Create Trusted Types policies for CSP compliance
+        if (window.trustedTypes && trustedTypes.createPolicy) {
+            trustedTypes.createPolicy('default', {
+                createHTML: (string) => string,
+                createScriptURL: (string) => string,
+                createScript: (string) => string,
+            });
+        }
+        
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
@@ -78,13 +94,20 @@
             'send_page_view': true
         });
         
+        // Delay Google Analytics to reduce main thread blocking
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const script = document.createElement('script');
+                script.src = 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX';
+                script.async = true;
+                document.head.appendChild(script);
+            }, 5000);
+        });
+        
         window.addEventListener('load', () => {
             if (window.performance && typeof gtag !== 'undefined') {
                 const perfData = window.performance.timing;
                 const pageLoadTime = perfData.loadEventEnd - perfData.navigationStart;
-                const connectTime = perfData.responseEnd - perfData.requestStart;
-                const renderTime = perfData.domComplete - perfData.domLoading;
-                
                 gtag('event', 'timing_complete', {
                     name: 'page_load',
                     value: pageLoadTime,
@@ -98,7 +121,7 @@
     <div class="bg-blur"></div>
 
     <div class="fixed top-6 left-6 z-50 md:hidden">
-        <button id="hamburgerToggle" class="bg-white bg-opacity-20 backdrop-blur-md p-3 rounded-full shadow-lg hover:scale-110 transition-all duration-300 border border-white border-opacity-30">
+        <button id="hamburgerToggle" class="bg-white bg-opacity-20 backdrop-blur-md p-3 rounded-full shadow-lg hover:scale-110 transition-all duration-300 border border-white border-opacity-30" aria-label="Toggle mobile menu">
             <div class="hamburger-icon">
                 <span></span>
                 <span></span>
@@ -150,7 +173,7 @@
     </div>
 
     <div class="fixed top-6 right-6 z-50 flex flex-col md:flex-row gap-2 md:gap-3">
-        <button id="themeToggle" class="bg-white bg-opacity-20 backdrop-blur-md p-2 md:p-3 rounded-full shadow-lg hover:scale-110 transition-all duration-300 border border-white border-opacity-30">
+        <button id="themeToggle" class="bg-white bg-opacity-20 backdrop-blur-md p-2 md:p-3 rounded-full shadow-lg hover:scale-110 transition-all duration-300 border border-white border-opacity-30" aria-label="Toggle dark mode">
             <i class="fas fa-moon text-lg md:text-xl"></i>
         </button>
         <button id="langToggle" class="bg-white bg-opacity-20 backdrop-blur-md px-3 py-2 md:px-4 md:py-3 rounded-full shadow-lg hover:scale-110 transition-all duration-300 border border-white border-opacity-30 font-semibold text-sm md:text-base">
@@ -164,7 +187,7 @@
     <main class="text-center fade-in bg-white bg-opacity-85 p-4 sm:p-6 md:p-10 rounded-2xl shadow-2xl w-11/12 lg:w-3/4 xl:w-1/2 flex flex-col justify-center relative z-10 backdrop-blur-md border border-white border-opacity-20">
         <div class="flex flex-col items-center text-center gap-2 md:gap-3">
             <div class="profile-ring">
-                <img alt="pfp.png" src="cdn/img/profile.webp" draggable="false" class="profile-img rounded-full" width="128" loading="lazy">
+                <img alt="Laexify Profile Picture" src="cdn/img/profile.webp" draggable="false" class="profile-img rounded-full" width="128" height="128" fetchpriority="high">
             </div>
             <div class="flex flex-col sm:flex-row items-center gap-3">
                 <span class="titleText font-bold text-4xl sm:text-5xl md:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500">Laexify</span>
@@ -225,16 +248,16 @@
 
         <div class="flex flex-row items-end justify-center my-3 md:my-5 gap-3 md:gap-4">
             <a class="social-link select-none duration-500 ease-out hover:-translate-y-2" href="https://github.com/thislaex" target="_blank" rel="noopener noreferrer">
-                <img src="cdn/img/github-original.svg" alt="GitHub" width="42" class="select-none hover:scale-110 hover:opacity-75 transition-transform duration-300" loading="lazy">
+                <img src="cdn/img/github-original.svg" alt="GitHub" width="42" height="42" class="select-none hover:scale-110 hover:opacity-75 transition-transform duration-300" loading="lazy">
             </a>
             <a class="social-link select-none duration-500 ease-out hover:-translate-y-2" href="https://instagram.com/Laexify" target="_blank" rel="noopener noreferrer">
-                <img src="cdn/img/instagram_logo.svg" alt="Instagram" width="42" class="select-none hover:scale-110 hover:opacity-75 transition-transform duration-300" loading="lazy">
+                <img src="cdn/img/instagram_logo.svg" alt="Instagram" width="42" height="42" class="select-none hover:scale-110 hover:opacity-75 transition-transform duration-300" loading="lazy">
             </a>
             <a class="social-link select-none duration-500 ease-out hover:-translate-y-2" href="https://discord.com/users/yourID" target="_blank" rel="noopener noreferrer">
-                <img src="cdn/img/discord-original.svg" alt="Discord" width="42" class="select-none hover:scale-110 hover:opacity-75 transition-transform duration-300" loading="lazy">
+                <img src="cdn/img/discord-original.svg" alt="Discord" width="42" height="42" class="select-none hover:scale-110 hover:opacity-75 transition-transform duration-300" loading="lazy">
             </a>
             <a class="social-link select-none duration-500 ease-out hover:-translate-y-2" href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">
-                <img src="cdn/img/linkedin-original.svg" alt="LinkedIn" width="42" class="select-none hover:scale-110 hover:opacity-75 transition-transform duration-300" loading="lazy">
+                <img src="cdn/img/linkedin-original.svg" alt="LinkedIn" width="42" height="42" class="select-none hover:scale-110 hover:opacity-75 transition-transform duration-300" loading="lazy">
             </a>
         </div>
 
@@ -1181,16 +1204,16 @@
                 }
                 
                 const languageColors = {
-                    'JavaScript': 'bg-yellow-500',
-                    'TypeScript': 'bg-blue-600',
-                    'Python': 'bg-blue-400',
-                    'HTML': 'bg-orange-500',
-                    'CSS': 'bg-purple-500',
-                    'PHP': 'bg-indigo-500',
-                    'Java': 'bg-red-600',
-                    'C++': 'bg-pink-600',
-                    'Go': 'bg-cyan-500',
-                    'Rust': 'bg-orange-700'
+                    'JavaScript': 'bg-yellow-700',
+                    'TypeScript': 'bg-blue-700',
+                    'Python': 'bg-blue-700',
+                    'HTML': 'bg-orange-700',
+                    'CSS': 'bg-purple-700',
+                    'PHP': 'bg-indigo-700',
+                    'Java': 'bg-red-700',
+                    'C++': 'bg-pink-700',
+                    'Go': 'bg-cyan-700',
+                    'Rust': 'bg-orange-800'
                 };
 
                 container.innerHTML = repos.slice(0, 6).map(repo => `
@@ -1211,13 +1234,13 @@
                             </span>
                         </div>
                         <div class="flex gap-2">
-                            <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-pink-600 text-sm font-medium flex items-center gap-1">
+                            <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer" class="text-blue-700 hover:text-pink-600 text-sm font-medium flex items-center gap-1" aria-label="View ${repo.name} source code on GitHub">
                                 <i class="fab fa-github"></i>
                                 <span data-lang="en">View Code</span>
                                 <span class="hidden" data-lang="tr">Kodu Gör</span>
                             </a>
                             ${repo.homepage ? `
-                                <a href="${repo.homepage}" target="_blank" rel="noopener noreferrer" class="text-green-600 hover:text-pink-600 text-sm font-medium flex items-center gap-1">
+                                <a href="${repo.homepage}" target="_blank" rel="noopener noreferrer" class="text-green-700 hover:text-pink-600 text-sm font-medium flex items-center gap-1" aria-label="View ${repo.name} live demo">
                                     <i class="fas fa-external-link-alt"></i>
                                     <span data-lang="en">Live Demo</span>
                                     <span class="hidden" data-lang="tr">Canlı Demo</span>
@@ -1443,21 +1466,84 @@
             }
         }
 
-        loadGitHubProjects();
-        loadGitHubActivity();
-        loadGitHubStats();
+        let chartJsLoaded = false;
+        function loadChartJs(callback) {
+            if (chartJsLoaded) {
+                callback();
+                return;
+            }
+            const script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js';
+            script.onload = () => {
+                chartJsLoaded = true;
+                callback();
+            };
+            document.head.appendChild(script);
+        }
+
+        // Use Intersection Observer to load GitHub data only when sections are visible
+        window.addEventListener('load', () => {
+            let githubDataLoaded = false;
+            
+            const loadGitHubData = () => {
+                if (githubDataLoaded) return;
+                githubDataLoaded = true;
+                
+                if ('requestIdleCallback' in window) {
+                    requestIdleCallback(() => {
+                        loadGitHubProjects();
+                        loadGitHubActivity();
+                        loadGitHubStats();
+                    }, { timeout: 3000 });
+                } else {
+                    setTimeout(() => {
+                        loadGitHubProjects();
+                        loadGitHubActivity();
+                        loadGitHubStats();
+                    }, 2000);
+                }
+            };
+            
+            // Load on intersection or after 5 seconds on mobile
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            loadGitHubData();
+                            observer.disconnect();
+                        }
+                    });
+                }, { rootMargin: '200px' });
+                
+                const projectsSection = document.getElementById('projects');
+                if (projectsSection) observer.observe(projectsSection);
+                
+                // Fallback: load after 8 seconds even if not visible
+                setTimeout(loadGitHubData, 8000);
+            } else {
+                setTimeout(loadGitHubData, 3000);
+            }
+        });
 
         let radarChart;
-        const radarCtx = document.getElementById('radarChart').getContext('2d');
+        const radarCtx = document.getElementById('radarChart')?.getContext('2d');
 
         window.initRadarChart = function(languageData) {
-            const isDark = currentTheme === 'dark';
+            if (!radarCtx) return;
             
-            if (radarChart) {
-                radarChart.destroy();
-            }
+            // Defer Chart.js load even more on mobile
+            const isMobile = window.innerWidth < 768;
+            const delay = isMobile ? 10000 : 0;
             
-            radarChart = new Chart(radarCtx, {
+            setTimeout(() => {
+                loadChartJs(() => {
+                    const isDark = currentTheme === 'dark';
+                    
+                    if (radarChart) {
+                        radarChart.destroy();
+                    }
+                    
+                    radarChart = new Chart(radarCtx, {
                 type: 'radar',
                 data: {
                     labels: languageData.labels,
@@ -1502,6 +1588,8 @@
                     }
                 }
             });
+                });
+            }, delay);
         };
 
         window.updateRadarChart = function() {
@@ -1581,18 +1669,20 @@
 
         const bgBlur = document.querySelector('.bg-blur');
         let ticking = false;
+        let lastScrollY = 0;
 
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    const scrolled = window.pageYOffset;
-                    const parallax = scrolled * 0.5;
-                    bgBlur.style.transform = `translateY(${parallax}px)`;
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        });
+        if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+            window.addEventListener('scroll', () => {
+                lastScrollY = window.pageYOffset;
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        bgBlur.style.transform = `translate3d(0, ${lastScrollY * 0.5}px, 0)`;
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }, { passive: true });
+        }
     </script>
 </body>
 </html>

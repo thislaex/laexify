@@ -1,3 +1,13 @@
+@font-face {
+    font-family: 'Font Awesome 6 Free';
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Font Awesome 6 Brands';
+    font-display: swap;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -11,6 +21,38 @@
     --text-secondary: #6b7280;
     --border-color: rgba(255, 255, 255, 0.2);
     --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+.px-2.py-1.bg-blue-100.text-blue-600,
+.px-3.py-1.bg-blue-100.text-blue-600 {
+    background-color: #dbeafe !important;
+    color: #1e40af !important;
+}
+
+.px-2.py-1.bg-green-100.text-green-600,
+.px-3.py-1.bg-green-100.text-green-600 {
+    background-color: #dcfce7 !important;
+    color: #15803d !important;
+}
+
+.px-2.py-1.bg-red-100.text-red-600,
+.px-3.py-1.bg-red-100.text-red-600 {
+    background-color: #fee2e2 !important;
+    color: #b91c1c !important;
+}
+
+.px-2.py-1.bg-pink-100.text-pink-600,
+.px-3.py-1.bg-pink-100.text-pink-600 {
+    background-color: #fce7f3 !important;
+    color: #be185d !important;
+}
+
+.text-xs.bg-yellow-500.text-white {
+    background-color: #ca8a04 !important;
+}
+
+.text-xs.bg-indigo-500.text-white {
+    background-color: #4338ca !important;
 }
 
 [data-theme="dark"] {
@@ -287,17 +329,18 @@ body {
 }
 
 .bg-blur {
-    background: url(../../img/bg.gif) no-repeat center center fixed;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    filter: blur(15px);
-    position: absolute;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 25%, rgba(240, 147, 251, 0.1) 50%, rgba(79, 172, 254, 0.1) 75%, rgba(0, 242, 254, 0.1) 100%);
+    position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     z-index: -1;
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    pointer-events: none;
 }
 
 .fade-in {
@@ -617,6 +660,8 @@ main {
     background: rgba(255, 255, 255, 0.75) !important;
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.3);
+    min-height: 600px;
+    contain: layout;
 }
 
 [data-theme="dark"] main {
@@ -638,31 +683,6 @@ main {
     background: rgba(30, 41, 59, 0.5) !important;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(99, 102, 241, 0.2);
-}
-
-
-.bg-blur {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
-    background-size: 400% 400%;
-    animation: gradient-shift 15s ease infinite;
-    transition: transform 0.1s ease-out;
-}
-
-@keyframes gradient-shift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-[data-theme="dark"] .bg-blur {
-    background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 25%, #2d3561 50%, #1a1a2e 75%, #0f0f23 100%);
-    background-size: 400% 400%;
 }
 
 
@@ -743,6 +763,11 @@ main {
 
 .mobile-menu-link:active {
     transform: scale(0.95);
+}
+
+#bottomNav {
+    height: 72px;
+    contain: layout;
 }
 
 .bottom-nav-item {
@@ -836,8 +861,9 @@ main {
         margin-bottom: 2rem;
     }
 
-    .fixed.top-6 {
+    .fixed.top-6.right-6 {
         top: 1rem;
+        min-height: 120px;
     }
 
     #bottomNav {
