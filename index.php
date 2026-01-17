@@ -1,0 +1,1707 @@
+<?php
+require_once 'config/database.php';
+require_once 'config/settings.php';
+
+$database = new Database();
+$db = $database->getConnection();
+$settingsObj = new Settings($db);
+$settings = $settingsObj->getAllSettings();
+
+$metaTitle = $settings['site_title'] ?? 'Laexify - Full Stack Developer Portfolio';
+$metaDescription = $settings['site_description'] ?? 'Laexify - Full Stack Developer specializing in Backend development, Internet and Network Technologies student with expertise in modern web technologies.';
+$metaKeywords = $settings['site_keywords'] ?? 'Full Stack Developer, Backend Developer, Web Developer, React, JavaScript, Bootstrap, Android Studio, Portfolio';
+$metaAuthor = $settings['site_author'] ?? 'Laexify';
+$ogTitle = $settings['og_title'] ?? 'Laexify - Full Stack Developer';
+$ogDescription = $settings['og_description'] ?? 'Full Stack Developer specializing in Backend development with expertise in modern web technologies.';
+$twitterTitle = $settings['twitter_title'] ?? 'Laexify - Full Stack Developer';
+$twitterDescription = $settings['twitter_description'] ?? 'Full Stack Developer specializing in Backend development.';
+$githubUsername = $settings['github_username'] ?? 'thislaex';
+?>
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="<?php echo htmlspecialchars($metaDescription); ?>">
+    <meta name="keywords" content="<?php echo htmlspecialchars($metaKeywords); ?>">
+    <meta name="author" content="<?php echo htmlspecialchars($metaAuthor); ?>">
+    <meta property="og:title" content="<?php echo htmlspecialchars($ogTitle); ?>">
+    <meta property="og:description" content="<?php echo htmlspecialchars($ogDescription); ?>">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<?php echo htmlspecialchars($twitterTitle); ?>">
+    <meta name="twitter:description" content="<?php echo htmlspecialchars($twitterDescription); ?>">
+    <title><?php echo htmlspecialchars($metaTitle); ?></title>
+    <link rel="icon" type="image/x-icon" href="cdn/img/favicon.ico">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#3b82f6">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Laexify">
+
+    <link rel="preload" href="cdn/assets/css/styles.css" as="style">
+    <link rel="preload" href="cdn/img/profile.webp" as="image">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="dns-prefetch" href="https://api.github.com">
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "<?php echo htmlspecialchars($metaAuthor); ?>",
+            "jobTitle": "Full Stack Developer",
+            "description": "<?php echo htmlspecialchars($metaDescription); ?>",
+            "url": "https://laexify.com",
+            "sameAs": [
+                "https://github.com/<?php echo htmlspecialchars($githubUsername); ?>",
+                "https://instagram.com/Laexify",
+                "https://linkedin.com/in/yourprofile"
+            ],
+            "knowsAbout": [
+                "JavaScript",
+                "TypeScript",
+                "React",
+                "Node.js",
+                "Express.js",
+                "MongoDB",
+                "MySQL",
+                "PostgreSQL",
+                "Python",
+                "PHP",
+                "Backend Development",
+                "Frontend Development",
+                "Network Technologies",
+                "Web Development"
+            ],
+            "alumniOf": {
+                "@type": "EducationalOrganization",
+                "name": "Internet and Network Technologies"
+            }
+        }
+    </script>
+    <style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background-color:#f3f4f6;color:#1f2937;transition:background-color .3s ease,color .3s ease;min-height:100vh}.bg-blur{position:fixed;top:0;left:0;width:100%;height:100%;background:url(cdn/img/bg.gif) center/cover;filter:blur(10px);opacity:.3;z-index:-1;will-change:transform;transform:translate3d(0,0,0)}.fade-in{opacity:1;transform:translateY(0)}.profile-ring{background:linear-gradient(45deg,#3b82f6,#ec4899);padding:4px;border-radius:50%;display:inline-block}.profile-img{width:128px;height:128px}main{min-height:600px}@font-face{font-family:'Font Awesome 6 Free';font-display:swap}@font-face{font-family:'Font Awesome 6 Brands';font-display:swap}@font-face{font-family:'Inter';font-display:swap}</style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" media="print" onload="this.media='all'">
+    <link rel="preload" href="cdn/assets/css/styles.css" as="style">
+    <link rel="stylesheet" href="cdn/assets/css/styles.css">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"></noscript>
+
+    <script>
+        // Create Trusted Types policies for CSP compliance
+        if (window.trustedTypes && trustedTypes.createPolicy) {
+            trustedTypes.createPolicy('default', {
+                createHTML: (string) => string,
+                createScriptURL: (string) => string,
+                createScript: (string) => string,
+            });
+        }
+
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX', {
+            'anonymize_ip': true,
+            'send_page_view': true
+        });
+
+        // Delay Google Analytics to reduce main thread blocking
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const script = document.createElement('script');
+                script.src = 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX';
+                script.async = true;
+                document.head.appendChild(script);
+            }, 5000);
+        });
+
+        window.addEventListener('load', () => {
+            if (window.performance && typeof gtag !== 'undefined') {
+                const perfData = window.performance.timing;
+                const pageLoadTime = perfData.loadEventEnd - perfData.navigationStart;
+                gtag('event', 'timing_complete', {
+                    name: 'page_load',
+                    value: pageLoadTime,
+                    event_category: 'Performance'
+                });
+            }
+        });
+    </script>
+</head>
+<body class="bg-gray-100 text-gray-800 flex flex-col items-center justify-center min-h-screen relative transition-colors duration-300">
+<div class="bg-blur"></div>
+
+<div class="fixed top-6 left-6 z-50 md:hidden">
+    <button id="hamburgerToggle" class="bg-white bg-opacity-20 backdrop-blur-md p-3 rounded-full shadow-lg hover:scale-110 transition-all duration-300 border border-white border-opacity-30" aria-label="Toggle mobile menu">
+        <div class="hamburger-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </button>
+</div>
+
+<div id="mobileMenu" class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md z-40 hidden md:hidden transition-all duration-300">
+    <div class="mobile-menu-content bg-white w-4/5 max-w-sm h-full shadow-2xl transform -translate-x-full transition-transform duration-300">
+        <div class="p-6">
+            <div class="flex items-center gap-3 mb-8 pb-4 border-b border-gray-300">
+                <img src="cdn/img/profile.webp" alt="Profile" class="w-12 h-12 rounded-full" loading="lazy">
+                <div>
+                    <h3 class="font-bold text-lg">Laexify</h3>
+                    <p class="text-xs text-gray-600" data-lang="en">Full Stack Developer</p>
+                    <p class="text-xs text-gray-600 hidden" data-lang="tr">Full Stack Geliştirici</p>
+                </div>
+            </div>
+            <nav class="space-y-3">
+                <a href="#about" class="mobile-menu-link flex items-center gap-3 p-3 rounded-lg hover:bg-blue-50 transition-colors">
+                    <i class="fas fa-user text-blue-500 w-6"></i>
+                    <span data-lang="en">About</span>
+                    <span class="hidden" data-lang="tr">Hakkımda</span>
+                </a>
+                <a href="#skills" class="mobile-menu-link flex items-center gap-3 p-3 rounded-lg hover:bg-blue-50 transition-colors">
+                    <i class="fas fa-code text-green-500 w-6"></i>
+                    <span data-lang="en">Skills</span>
+                    <span class="hidden" data-lang="tr">Yetenekler</span>
+                </a>
+                <a href="#projects" class="mobile-menu-link flex items-center gap-3 p-3 rounded-lg hover:bg-blue-50 transition-colors">
+                    <i class="fas fa-folder text-purple-500 w-6"></i>
+                    <span data-lang="en">Projects</span>
+                    <span class="hidden" data-lang="tr">Projeler</span>
+                </a>
+                <a href="#blog" class="mobile-menu-link flex items-center gap-3 p-3 rounded-lg hover:bg-blue-50 transition-colors">
+                    <i class="fas fa-blog text-pink-500 w-6"></i>
+                    <span data-lang="en">Blog</span>
+                    <span class="hidden" data-lang="tr">Blog</span>
+                </a>
+                <a href="#contact" class="mobile-menu-link flex items-center gap-3 p-3 rounded-lg hover:bg-blue-50 transition-colors">
+                    <i class="fas fa-envelope text-orange-500 w-6"></i>
+                    <span data-lang="en">Contact</span>
+                    <span class="hidden" data-lang="tr">İletişim</span>
+                </a>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<div class="fixed top-6 right-6 z-50 flex flex-col md:flex-row gap-2 md:gap-3">
+    <button id="themeToggle" class="bg-white bg-opacity-20 backdrop-blur-md p-2 md:p-3 rounded-full shadow-lg hover:scale-110 transition-all duration-300 border border-white border-opacity-30" aria-label="Toggle dark mode">
+        <i class="fas fa-moon text-lg md:text-xl"></i>
+    </button>
+    <button id="langToggle" class="bg-white bg-opacity-20 backdrop-blur-md px-3 py-2 md:px-4 md:py-3 rounded-full shadow-lg hover:scale-110 transition-all duration-300 border border-white border-opacity-30 font-semibold text-sm md:text-base">
+        EN
+    </button>
+    <a href="cdn/cv.pdf" download class="bg-white bg-opacity-20 backdrop-blur-md p-2 md:p-3 rounded-full shadow-lg hover:scale-110 transition-all duration-300 border border-white border-opacity-30" title="Download CV">
+        <i class="fas fa-download text-lg md:text-xl"></i>
+    </a>
+</div>
+
+<main class="text-center fade-in bg-white bg-opacity-85 p-4 sm:p-6 md:p-10 rounded-2xl shadow-2xl w-11/12 lg:w-3/4 xl:w-1/2 flex flex-col justify-center relative z-10 backdrop-blur-md border border-white border-opacity-20">
+    <div class="flex flex-col items-center text-center gap-2 md:gap-3">
+        <div class="profile-ring">
+            <img alt="Laexify Profile Picture" src="cdn/img/profile.webp" draggable="false" class="profile-img rounded-full" width="128" height="128" fetchpriority="high">
+        </div>
+        <div class="flex flex-col sm:flex-row items-center gap-3">
+            <span class="titleText font-bold text-4xl sm:text-5xl md:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500">Laexify</span>
+            <div class="flex gap-2">
+                <div class="icon-container badge bg-gradient-to-r from-blue-500 to-pink-500 text-white p-1 rounded-full w-6 h-6">
+                    <i class="fas fa-code text-sm"></i>
+                    <span class="tooltip">Developer</span>
+                </div>
+                <div class="icon-container badge bg-gradient-to-r from-green-400 to-blue-500 text-white p-1 rounded-full w-6 h-6">
+                    <i class="fas fa-laptop-code text-sm"></i>
+                    <span class="tooltip">Full Stack</span>
+                </div>
+                <div class="icon-container badge bg-gradient-to-r from-purple-500 to-red-500 text-white p-1 rounded-full w-6 h-6">
+                    <i class="fas fa-database text-sm"></i>
+                    <span class="tooltip">Backend Specialist</span>
+                </div>
+                <div class="icon-container badge bg-gradient-to-r from-yellow-400 to-red-500 text-white p-1 rounded-full w-6 h-6">
+                    <i class="fas fa-paint-brush text-sm"></i>
+                    <span class="tooltip">Frontend Enthusiast</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="my-6 px-4">
+        <div class="flex flex-col items-center text-center space-y-3">
+            <p class="text-base md:text-lg leading-relaxed max-w-2xl" data-lang="en">
+                Hello! I'm currently studying <span class="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500">Internet and Network Technologies</span>. My primary focus is on Backend development, but I also have a good understanding of Frontend technologies. Below are some of the areas I'm interested in and have experience with.
+            </p>
+            <p class="text-base md:text-lg leading-relaxed max-w-2xl hidden" data-lang="tr">
+                Merhaba! Şu anda <span class="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500">İnternet ve Ağ Teknolojileri</span> okuyorum. Öncelikli odak noktam Backend geliştirme olmakla birlikte, Frontend teknolojileri konusunda da iyi bir anlayışa sahibim. Aşağıda ilgilendiğim ve deneyim sahibi olduğum alanlardan bazılarını bulabilirsiniz.
+            </p>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-6">
+        <div class="stat-box bg-white bg-opacity-30 p-3 sm:p-4 rounded-xl backdrop-blur-sm">
+            <div class="text-2xl sm:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500" data-target="50">0</div>
+            <div class="text-sm mt-1 text-gray-900 font-semibold" data-lang="en">Projects</div>
+            <div class="text-sm mt-1 text-gray-900 font-semibold hidden" data-lang="tr">Proje</div>
+        </div>
+        <div class="stat-box bg-white bg-opacity-30 p-3 sm:p-4 rounded-xl backdrop-blur-sm">
+            <div class="text-2xl sm:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-blue-500" data-target="19">0</div>
+            <div class="text-sm mt-1 text-gray-900 font-semibold" data-lang="en">Technologies</div>
+            <div class="text-sm mt-1 text-gray-900 font-semibold hidden" data-lang="tr">Teknoloji</div>
+        </div>
+        <div class="stat-box bg-white bg-opacity-30 p-3 sm:p-4 rounded-xl backdrop-blur-sm">
+            <div class="text-2xl sm:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500" data-target="3">0</div>
+            <div class="text-sm mt-1 text-gray-900 font-semibold" data-lang="en">Years Learning</div>
+            <div class="text-sm mt-1 text-gray-900 font-semibold hidden" data-lang="tr">Yıl Deneyim</div>
+        </div>
+        <div class="stat-box bg-white bg-opacity-30 p-3 sm:p-4 rounded-xl backdrop-blur-sm">
+            <div class="text-2xl sm:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-blue-500" data-target="100">0</div>
+            <div class="text-sm mt-1 text-gray-900 font-semibold" data-lang="en">Dedication</div>
+            <div class="text-sm mt-1 text-gray-900 font-semibold hidden" data-lang="tr">Motivasyon</div>
+        </div>
+    </div>
+
+    <div class="flex flex-row items-end justify-center my-3 md:my-5 gap-3 md:gap-4">
+        <a class="social-link select-none duration-500 ease-out hover:-translate-y-2" href="https://github.com/thislaex" target="_blank" rel="noopener noreferrer">
+            <img src="cdn/img/github-original.svg" alt="GitHub" width="42" height="42" class="select-none hover:scale-110 hover:opacity-75 transition-transform duration-300" loading="lazy">
+        </a>
+        <a class="social-link select-none duration-500 ease-out hover:-translate-y-2" href="https://instagram.com/Laexify" target="_blank" rel="noopener noreferrer">
+            <img src="cdn/img/instagram_logo.svg" alt="Instagram" width="42" height="42" class="select-none hover:scale-110 hover:opacity-75 transition-transform duration-300" loading="lazy">
+        </a>
+        <a class="social-link select-none duration-500 ease-out hover:-translate-y-2" href="https://discord.com/users/yourID" target="_blank" rel="noopener noreferrer">
+            <img src="cdn/img/discord-original.svg" alt="Discord" width="42" height="42" class="select-none hover:scale-110 hover:opacity-75 transition-transform duration-300" loading="lazy">
+        </a>
+        <a class="social-link select-none duration-500 ease-out hover:-translate-y-2" href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">
+            <img src="cdn/img/linkedin-original.svg" alt="LinkedIn" width="42" height="42" class="select-none hover:scale-110 hover:opacity-75 transition-transform duration-300" loading="lazy">
+        </a>
+    </div>
+
+    <div id="skills" class="mt-6 sm:mt-8 p-4 sm:p-6 bg-white bg-opacity-15 rounded-xl backdrop-blur-sm">
+        <h3 class="text-xl sm:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500 mb-4 sm:mb-6">
+            <span data-lang="en">Skills & Expertise</span>
+            <span class="hidden" data-lang="tr">Yetenekler & Uzmanlık</span>
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-5 text-left">
+            <div class="skill-card bg-white bg-opacity-30 p-4 sm:p-5 rounded-xl shadow-lg">
+                <h4 class="font-semibold mb-2 flex items-center">
+                    <i class="fas fa-server mr-2 text-blue-500"></i>
+                    <span data-lang="en">Backend Development</span>
+                    <span class="hidden" data-lang="tr">Backend Geliştirme</span>
+                </h4>
+                <p class="text-sm" data-lang="en">RESTful APIs, Database Design, Authentication, Server Architecture</p>
+                <p class="text-sm hidden" data-lang="tr">RESTful API, Veritabanı Tasarımı, Kimlik Doğrulama, Sunucu Mimarisi</p>
+            </div>
+            <div class="skill-card bg-white bg-opacity-30 p-4 sm:p-5 rounded-xl shadow-lg">
+                <h4 class="font-semibold mb-2 flex items-center">
+                    <i class="fas fa-desktop mr-2 text-pink-500"></i>
+                    <span data-lang="en">Frontend Development</span>
+                    <span class="hidden" data-lang="tr">Frontend Geliştirme</span>
+                </h4>
+                <p class="text-sm" data-lang="en">Responsive Design, Modern Frameworks, UI/UX Implementation</p>
+                <p class="text-sm hidden" data-lang="tr">Responsive Tasarım, Modern Framework'ler, UI/UX Uygulaması</p>
+            </div>
+            <div class="skill-card bg-white bg-opacity-30 p-4 sm:p-5 rounded-xl shadow-lg">
+                <h4 class="font-semibold mb-2 flex items-center">
+                    <i class="fas fa-network-wired mr-2 text-green-500"></i>
+                    <span data-lang="en">Network Technologies</span>
+                    <span class="hidden" data-lang="tr">Ağ Teknolojileri</span>
+                </h4>
+                <p class="text-sm" data-lang="en">TCP/IP, Network Security, System Administration, Cloud Services</p>
+                <p class="text-sm hidden" data-lang="tr">TCP/IP, Ağ Güvenliği, Sistem Yönetimi, Bulut Hizmetleri</p>
+            </div>
+            <div class="skill-card bg-white bg-opacity-30 p-4 sm:p-5 rounded-xl shadow-lg">
+                <h4 class="font-semibold mb-2 flex items-center">
+                    <i class="fas fa-mobile-alt mr-2 text-purple-500"></i>
+                    <span data-lang="en">Mobile Development</span>
+                    <span class="hidden" data-lang="tr">Mobil Geliştirme</span>
+                </h4>
+                <p class="text-sm" data-lang="en">Android Applications, Cross-platform Development</p>
+                <p class="text-sm hidden" data-lang="tr">Android Uygulamaları, Çapraz Platform Geliştirme</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="about" class="mt-6 sm:mt-8 p-4 sm:p-6 bg-white bg-opacity-15 rounded-xl backdrop-blur-sm">
+        <h3 class="text-xl sm:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500 mb-4 sm:mb-6 text-center">
+            <span data-lang="en">About Me</span>
+            <span class="hidden" data-lang="tr">Hakkımda</span>
+        </h3>
+        <div class="space-y-6">
+            <div class="bg-white bg-opacity-30 p-4 sm:p-6 rounded-xl">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-pink-500 rounded-full flex items-center justify-center">
+                        <i class="fas fa-user text-white text-xl"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold">
+                        <span data-lang="en">My Journey</span>
+                        <span class="hidden" data-lang="tr">Yolculuğum</span>
+                    </h4>
+                </div>
+                <p class="text-sm leading-relaxed" data-lang="en">
+                    My passion for technology started when I was young, and it has grown into a dedicated career path. Currently studying Internet and Network Technologies, I've immersed myself in both frontend and backend development. I believe in continuous learning and staying updated with the latest technologies. My goal is to build scalable, efficient, and user-friendly applications that make a real difference.
+                </p>
+                <p class="text-sm leading-relaxed hidden" data-lang="tr">
+                    Teknolojiye olan tutkum küçük yaşlarda başladı ve zamanla kendini adanmış bir kariyer yoluna dönüştü. Şu anda İnternet ve Ağ Teknolojileri okurken, hem frontend hem de backend geliştirme alanlarına kendimi kaptırdım. Sürekli öğrenmeye ve en son teknolojilerle güncel kalmaya inanıyorum. Hedefim, gerçek bir fark yaratan ölçeklenebilir, verimli ve kullanıcı dostu uygulamalar geliştirmek.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div class="bg-white bg-opacity-30 p-4 sm:p-5 rounded-xl">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-10 h-10 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center">
+                            <i class="fas fa-graduation-cap text-white"></i>
+                        </div>
+                        <h4 class="text-lg font-semibold">
+                            <span data-lang="en">Education</span>
+                            <span class="hidden" data-lang="tr">Eğitim</span>
+                        </h4>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="border-l-2 border-blue-500 pl-4">
+                            <p class="font-semibold text-sm" data-lang="en">Internet and Network Technologies</p>
+                            <p class="font-semibold text-sm hidden" data-lang="tr">İnternet ve Ağ Teknolojileri</p>
+                            <p class="text-xs text-gray-600">2024 - Present</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white bg-opacity-30 p-4 sm:p-5 rounded-xl">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
+                            <i class="fas fa-briefcase text-white"></i>
+                        </div>
+                        <h4 class="text-lg font-semibold">
+                            <span data-lang="en">Experience</span>
+                            <span class="hidden" data-lang="tr">Deneyim</span>
+                        </h4>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="border-l-2 border-pink-500 pl-4">
+                            <p class="font-semibold text-sm" data-lang="en">Full Stack Developer</p>
+                            <p class="font-semibold text-sm hidden" data-lang="tr">Full Stack Developer</p>
+                            <p class="text-xs text-gray-600" data-lang="en">Freelance Projects</p>
+                            <p class="text-xs text-gray-600 hidden" data-lang="tr">Serbest Projeler</p>
+                            <p class="text-xs text-gray-600">2021 - Present</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white bg-opacity-30 p-4 sm:p-5 rounded-xl">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center">
+                        <i class="fas fa-heart text-white"></i>
+                    </div>
+                    <h4 class="text-lg font-semibold">
+                        <span data-lang="en">Interests</span>
+                        <span class="hidden" data-lang="tr">İlgi Alanları</span>
+                    </h4>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 bg-gradient-to-r from-blue-500 to-pink-500 text-white rounded-full text-xs">Web Development</span>
+                    <span class="px-3 py-1 bg-gradient-to-r from-green-500 to-blue-500 text-white rounded-full text-xs">Cloud Computing</span>
+                    <span class="px-3 py-1 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full text-xs">Network Security</span>
+                    <span class="px-3 py-1 bg-gradient-to-r from-yellow-500 to-orange-500 text-white rounded-full text-xs">Open Source</span>
+                    <span class="px-3 py-1 bg-gradient-to-r from-red-500 to-pink-500 text-white rounded-full text-xs">DevOps</span>
+                    <span class="px-3 py-1 bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-full text-xs">API Design</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex flex-wrap justify-center gap-3 sm:gap-5 p-4 sm:p-6 md:p-8 bg-white bg-opacity-15 rounded-xl backdrop-blur-sm mt-6 shadow-lg">
+        <h3 class="w-full text-xl sm:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500 mb-4 text-center">
+            <span data-lang="en">Technologies I Work With</span>
+            <span class="hidden" data-lang="tr">Kullandığım Teknolojiler</span>
+        </h3>
+        <div class="icon-container">
+            <img src="cdn/img/html5-original.svg" alt="HTML5" class="tech-icon w-10 h-10 sm:w-12 sm:h-12" loading="lazy">
+            <span class="tooltip">HTML5</span>
+        </div>
+        <div class="icon-container">
+            <img src="cdn/img/javascript-original.svg" alt="JavaScript" class="tech-icon w-10 h-10 sm:w-12 sm:h-12" loading="lazy">
+            <span class="tooltip">JavaScript</span>
+        </div>
+        <div class="icon-container">
+            <img src="cdn/img/typescript-original.svg" alt="TypeScript" class="tech-icon w-10 h-10 sm:w-12 sm:h-12" loading="lazy">
+            <span class="tooltip">TypeScript</span>
+        </div>
+        <div class="icon-container">
+            <img src="cdn/img/react-original.svg" alt="React" class="tech-icon w-10 h-10 sm:w-12 sm:h-12" loading="lazy">
+            <span class="tooltip">React</span>
+        </div>
+        <div class="icon-container">
+            <img src="cdn/img/nodejs-original.svg" alt="Node.js" class="tech-icon w-10 h-10 sm:w-12 sm:h-12" loading="lazy">
+            <span class="tooltip">Node.js</span>
+        </div>
+        <div class="icon-container">
+            <img src="cdn/img/express-original.svg" alt="Express.js" class="tech-icon w-10 h-10 sm:w-12 sm:h-12" loading="lazy">
+            <span class="tooltip">Express.js</span>
+        </div>
+        <div class="icon-container">
+            <img src="cdn/img/mongodb-original.svg" alt="MongoDB" class="tech-icon w-10 h-10 sm:w-12 sm:h-12" loading="lazy">
+            <span class="tooltip">MongoDB</span>
+        </div>
+        <div class="icon-container">
+            <img src="cdn/img/mysql-original.svg" alt="MySQL" class="tech-icon w-10 h-10 sm:w-12 sm:h-12" loading="lazy">
+            <span class="tooltip">MySQL</span>
+        </div>
+        <div class="icon-container">
+            <img src="cdn/img/postgresql-original.svg" alt="PostgreSQL" class="tech-icon w-10 h-10 sm:w-12 sm:h-12" loading="lazy">
+            <span class="tooltip">PostgreSQL</span>
+        </div>
+        <div class="icon-container">
+            <img src="cdn/img/python-original.svg" alt="Python" class="tech-icon w-10 h-10 sm:w-12 sm:h-12" loading="lazy">
+            <span class="tooltip">Python</span>
+        </div>
+        <div class="icon-container">
+            <img src="cdn/img/php-original.svg" alt="PHP" class="tech-icon w-10 h-10 sm:w-12 sm:h-12" loading="lazy">
+            <span class="tooltip">PHP</span>
+        </div>
+        <div class="icon-container">
+            <img src="cdn/img/bootstrap-plain.svg" alt="Bootstrap" class="tech-icon w-10 h-10 sm:w-12 sm:h-12" loading="lazy">
+            <span class="tooltip">Bootstrap</span>
+        </div>
+        <div class="icon-container">
+            <img src="cdn/img/tailwindcss-plain.svg" alt="Tailwind CSS" class="tech-icon w-10 h-10 sm:w-12 sm:h-12" loading="lazy">
+            <span class="tooltip">Tailwind CSS</span>
+        </div>
+        <div class="icon-container">
+            <img src="cdn/img/git-original.svg" alt="Git" class="tech-icon w-10 h-10 sm:w-12 sm:h-12" loading="lazy">
+            <span class="tooltip">Git</span>
+        </div>
+        <div class="icon-container">
+            <img src="cdn/img/github-original.svg" alt="GitHub" class="tech-icon w-10 h-10 sm:w-12 sm:h-12" loading="lazy">
+            <span class="tooltip">GitHub</span>
+        </div>
+        <div class="icon-container">
+            <img src="cdn/img/docker-original.svg" alt="Docker" class="tech-icon w-10 h-10 sm:w-12 sm:h-12" loading="lazy">
+            <span class="tooltip">Docker</span>
+        </div>
+        <div class="icon-container">
+            <img src="cdn/img/linux-original.svg" alt="Linux" class="tech-icon w-10 h-10 sm:w-12 sm:h-12" loading="lazy">
+            <span class="tooltip">Linux</span>
+        </div>
+        <div class="icon-container">
+            <img src="cdn/img/vscode-original.svg" alt="VS Code" class="tech-icon w-10 h-10 sm:w-12 sm:h-12" loading="lazy">
+            <span class="tooltip">VS Code</span>
+        </div>
+        <div class="icon-container">
+            <img src="cdn/img/androidstudio-original.svg" alt="Android Studio" class="tech-icon w-10 h-10 sm:w-12 sm:h-12" loading="lazy">
+            <span class="tooltip">Android Studio</span>
+        </div>
+    </div>
+
+    <div class="mt-6 sm:mt-8 p-4 sm:p-6 bg-white bg-opacity-15 rounded-xl backdrop-blur-sm">
+        <h3 class="text-xl sm:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500 mb-4 sm:mb-6 text-center">
+            <span data-lang="en">Certificates & Achievements</span>
+            <span class="hidden" data-lang="tr">Sertifikalar & Başarılar</span>
+        </h3>
+        <div class="grid grid-cols-1 gap-5">
+            <div class="certificate-card bg-white bg-opacity-30 p-4 sm:p-5 rounded-xl hover:shadow-xl transition-all duration-300">
+                <div class="flex items-start gap-4">
+                    <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-certificate text-white text-2xl"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="font-bold text-lg mb-1" data-lang="en">Full Stack Web Development</h4>
+                        <h4 class="font-bold text-lg mb-1 hidden" data-lang="tr">Full Stack Web Geliştirme</h4>
+                        <p class="text-sm text-gray-600 mb-2">Online Platform</p>
+                        <p class="text-xs text-gray-500">2024</p>
+                        <div class="mt-3 flex gap-2">
+                            <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded text-xs">JavaScript</span>
+                            <span class="px-2 py-1 bg-green-100 text-green-600 rounded text-xs">Node.js</span>
+                            <span class="px-2 py-1 bg-purple-100 text-purple-600 rounded text-xs">React</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="certificate-card bg-white bg-opacity-30 p-4 sm:p-5 rounded-xl hover:shadow-xl transition-all duration-300">
+                <div class="flex items-start gap-4">
+                    <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-teal-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-network-wired text-white text-2xl"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="font-bold text-lg mb-1" data-lang="en">Network Fundamentals</h4>
+                        <h4 class="font-bold text-lg mb-1 hidden" data-lang="tr">Ağ Temelleri</h4>
+                        <p class="text-sm text-gray-600 mb-2">Cisco Networking Academy</p>
+                        <p class="text-xs text-gray-500">2023</p>
+                        <div class="mt-3 flex gap-2">
+                            <span class="px-2 py-1 bg-green-100 text-green-600 rounded text-xs">TCP/IP</span>
+                            <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded text-xs">Routing</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="certificate-card bg-white bg-opacity-30 p-4 sm:p-5 rounded-xl hover:shadow-xl transition-all duration-300">
+                <div class="flex items-start gap-4">
+                    <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-database text-white text-2xl"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="font-bold text-lg mb-1" data-lang="en">Database Management</h4>
+                        <h4 class="font-bold text-lg mb-1 hidden" data-lang="tr">Veritabanı Yönetimi</h4>
+                        <p class="text-sm text-gray-600 mb-2">Online Learning Platform</p>
+                        <p class="text-xs text-gray-500">2024</p>
+                        <div class="mt-3 flex gap-2">
+                            <span class="px-2 py-1 bg-purple-100 text-purple-600 rounded text-xs">SQL</span>
+                            <span class="px-2 py-1 bg-green-100 text-green-600 rounded text-xs">MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="certificate-card bg-white bg-opacity-30 p-4 sm:p-5 rounded-xl hover:shadow-xl transition-all duration-300">
+                <div class="flex items-start gap-4">
+                    <div class="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-trophy text-white text-2xl"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="font-bold text-lg mb-1" data-lang="en">GitHub Contributions</h4>
+                        <h4 class="font-bold text-lg mb-1 hidden" data-lang="tr">GitHub Katkıları</h4>
+                        <p class="text-sm text-gray-600 mb-2" data-lang="en">Active Open Source Contributor</p>
+                        <p class="text-sm text-gray-600 mb-2 hidden" data-lang="tr">Aktif Açık Kaynak Katkıcısı</p>
+                        <p class="text-xs text-gray-500">2022 - Present</p>
+                        <div class="mt-3 flex gap-2">
+                            <span class="px-2 py-1 bg-orange-100 text-orange-600 rounded text-xs">50+ Repos</span>
+                            <span class="px-2 py-1 bg-red-100 text-red-600 rounded text-xs">Open Source</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="projects" class="mt-6 sm:mt-8 p-4 sm:p-6 bg-white bg-opacity-15 rounded-xl backdrop-blur-sm">
+        <h3 class="text-xl sm:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500 mb-4 sm:mb-6 text-center">
+            <span data-lang="en">Featured Projects</span>
+            <span class="hidden" data-lang="tr">Öne Çıkan Projeler</span>
+        </h3>
+
+        <div id="filterButtons" class="mb-5 flex flex-wrap justify-center gap-2">
+            <button class="project-filter-btn active px-4 py-2 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg" data-filter="all">
+                <span data-lang="en">All</span>
+                <span class="hidden" data-lang="tr">Tümü</span>
+            </button>
+        </div>
+
+        <div id="projectsContainer" class="grid grid-cols-1 gap-5">
+            <div class="col-span-full text-center py-8">
+                <i class="fas fa-spinner fa-spin text-4xl text-blue-500"></i>
+                <p class="mt-2 text-gray-600" data-lang="en">Loading projects...</p>
+                <p class="mt-2 text-gray-600 hidden" data-lang="tr">Projeler yükleniyor...</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-6 sm:mt-8 p-4 sm:p-6 bg-white bg-opacity-15 rounded-xl backdrop-blur-sm">
+        <h3 class="text-xl sm:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500 mb-4 sm:mb-6 text-center">
+            <span data-lang="en">GitHub Statistics</span>
+            <span class="hidden" data-lang="tr">GitHub İstatistikleri</span>
+        </h3>
+        <div id="githubStatsContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="text-center py-8 col-span-full">
+                <i class="fas fa-spinner fa-spin text-4xl text-blue-500"></i>
+                <p class="mt-2 text-gray-600" data-lang="en">Loading stats...</p>
+                <p class="mt-2 text-gray-600 hidden" data-lang="tr">İstatistikler yükleniyor...</p>
+            </div>
+        </div>
+        <div id="languageStatsContainer" class="mt-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+        </div>
+    </div>
+
+    <div class="mt-6 sm:mt-8 p-4 sm:p-6 bg-white bg-opacity-15 rounded-xl backdrop-blur-sm">
+        <h3 class="text-xl sm:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500 mb-4 sm:mb-6 text-center">
+            <span data-lang="en">Recent GitHub Activity</span>
+            <span class="hidden" data-lang="tr">Son GitHub Aktiviteleri</span>
+        </h3>
+        <div id="activityContainer" class="space-y-3">
+            <div class="text-center py-8">
+                <i class="fas fa-spinner fa-spin text-4xl text-blue-500"></i>
+                <p class="mt-2 text-gray-600" data-lang="en">Loading activity...</p>
+                <p class="mt-2 text-gray-600 hidden" data-lang="tr">Aktiviteler yükleniyor...</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-6 sm:mt-8 p-4 sm:p-6 bg-white bg-opacity-15 rounded-xl backdrop-blur-sm">
+        <h3 class="text-xl sm:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500 mb-4 sm:mb-6 text-center">
+            <span data-lang="en">Career & Education Timeline</span>
+            <span class="hidden" data-lang="tr">Kariyer & Eğitim Zaman Çizelgesi</span>
+        </h3>
+        <div class="relative">
+            <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-blue-500 via-pink-500 to-purple-500"></div>
+
+            <div class="timeline-item mb-8 flex items-center w-full">
+                <div class="w-1/2 pr-8 text-right">
+                    <div class="bg-white bg-opacity-30 p-4 rounded-xl">
+                        <h4 class="font-bold text-lg mb-1" data-lang="en">Internet and Network Technologies</h4>
+                        <h4 class="font-bold text-lg mb-1 hidden" data-lang="tr">İnternet ve Ağ Teknolojileri</h4>
+                        <p class="text-sm text-gray-600" data-lang="en">Associate Degree</p>
+                        <p class="text-sm text-gray-600 hidden" data-lang="tr">Ön Lisans</p>
+                        <p class="text-xs text-gray-500 mt-2">2024 - Present</p>
+                    </div>
+                </div>
+                <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-pink-500 rounded-full flex items-center justify-center z-10 flex-shrink-0">
+                    <i class="fas fa-graduation-cap text-white"></i>
+                </div>
+                <div class="w-1/2 pl-8"></div>
+            </div>
+
+            <div class="timeline-item mb-8 flex items-center w-full flex-row-reverse">
+                <div class="w-1/2 pl-8 text-left">
+                    <div class="bg-white bg-opacity-30 p-4 rounded-xl">
+                        <h4 class="font-bold text-lg mb-1" data-lang="en">Full Stack Developer</h4>
+                        <h4 class="font-bold text-lg mb-1 hidden" data-lang="tr">Full Stack Developer</h4>
+                        <p class="text-sm text-gray-600" data-lang="en">Freelance Projects</p>
+                        <p class="text-sm text-gray-600 hidden" data-lang="tr">Serbest Projeler</p>
+                        <p class="text-xs text-gray-500 mt-2">2021 - Present</p>
+                    </div>
+                </div>
+                <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center z-10 flex-shrink-0">
+                    <i class="fas fa-briefcase text-white"></i>
+                </div>
+                <div class="w-1/2 pr-8"></div>
+            </div>
+
+            <div class="timeline-item mb-8 flex items-center w-full">
+                <div class="w-1/2 pr-8 text-right">
+                    <div class="bg-white bg-opacity-30 p-4 rounded-xl">
+                        <h4 class="font-bold text-lg mb-1" data-lang="en">Started Web Development Journey</h4>
+                        <h4 class="font-bold text-lg mb-1 hidden" data-lang="tr">Web Geliştirme Yolculuğu Başladı</h4>
+                        <p class="text-sm text-gray-600" data-lang="en">Self-taught Learning</p>
+                        <p class="text-sm text-gray-600 hidden" data-lang="tr">Kendi Kendine Öğrenme</p>
+                        <p class="text-xs text-gray-500 mt-2">2021</p>
+                    </div>
+                </div>
+                <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center z-10 flex-shrink-0">
+                    <i class="fas fa-rocket text-white"></i>
+                </div>
+                <div class="w-1/2 pl-8"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-6 sm:mt-8 p-4 sm:p-6 bg-white bg-opacity-15 rounded-xl backdrop-blur-sm">
+        <h3 class="text-xl sm:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500 mb-4 sm:mb-6 text-center">
+            <span data-lang="en">Tech Stack Proficiency</span>
+            <span class="hidden" data-lang="tr">Teknoloji Yetkinliği</span>
+        </h3>
+        <div class="flex justify-center">
+            <canvas id="radarChart" width="400" height="400" class="max-w-full"></canvas>
+        </div>
+    </div>
+
+    <div class="mt-6 sm:mt-8 p-4 sm:p-6 bg-white bg-opacity-15 rounded-xl backdrop-blur-sm">
+        <h3 class="text-xl sm:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500 mb-4 sm:mb-6 text-center">
+            <span data-lang="en">Testimonials</span>
+            <span class="hidden" data-lang="tr">Referanslar</span>
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div class="bg-white bg-opacity-30 p-5 rounded-xl">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-pink-500 rounded-full flex items-center justify-center">
+                        <i class="fas fa-user text-white"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">John Doe</h4>
+                        <p class="text-xs text-gray-600" data-lang="en">Project Manager</p>
+                        <p class="text-xs text-gray-600 hidden" data-lang="tr">Proje Yöneticisi</p>
+                    </div>
+                </div>
+                <div class="flex gap-1 mb-3">
+                    <i class="fas fa-star text-yellow-500"></i>
+                    <i class="fas fa-star text-yellow-500"></i>
+                    <i class="fas fa-star text-yellow-500"></i>
+                    <i class="fas fa-star text-yellow-500"></i>
+                    <i class="fas fa-star text-yellow-500"></i>
+                </div>
+                <p class="text-sm italic" data-lang="en">"Exceptional developer with strong technical skills. Delivered our project ahead of schedule with excellent code quality. Highly recommended for complex web applications."</p>
+                <p class="text-sm italic hidden" data-lang="tr">"Güçlü teknik becerilere sahip olağanüstü bir geliştirici. Projemizi planlanandan önce mükemmel kod kalitesiyle teslim etti. Karmaşık web uygulamaları için şiddetle tavsiye edilir."</p>
+            </div>
+
+            <div class="bg-white bg-opacity-30 p-5 rounded-xl">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
+                        <i class="fas fa-user text-white"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">Sarah Smith</h4>
+                        <p class="text-xs text-gray-600" data-lang="en">CEO, Tech Startup</p>
+                        <p class="text-xs text-gray-600 hidden" data-lang="tr">CEO, Teknoloji Startup</p>
+                    </div>
+                </div>
+                <div class="flex gap-1 mb-3">
+                    <i class="fas fa-star text-yellow-500"></i>
+                    <i class="fas fa-star text-yellow-500"></i>
+                    <i class="fas fa-star text-yellow-500"></i>
+                    <i class="fas fa-star text-yellow-500"></i>
+                    <i class="fas fa-star text-yellow-500"></i>
+                </div>
+                <p class="text-sm italic" data-lang="en">"Great communication and problem-solving skills. Built our MVP from scratch and helped scale it to thousands of users. A true professional."</p>
+                <p class="text-sm italic hidden" data-lang="tr">"Harika iletişim ve problem çözme becerileri. MVP'mizi sıfırdan inşa etti ve binlerce kullanıcıya ölçeklendirmemize yardımcı oldu. Gerçek bir profesyonel."</p>
+            </div>
+
+            <div class="bg-white bg-opacity-30 p-5 rounded-xl">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center">
+                        <i class="fas fa-user text-white"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">Michael Chen</h4>
+                        <p class="text-xs text-gray-600" data-lang="en">Senior Developer</p>
+                        <p class="text-xs text-gray-600 hidden" data-lang="tr">Kıdemli Geliştirici</p>
+                    </div>
+                </div>
+                <div class="flex gap-1 mb-3">
+                    <i class="fas fa-star text-yellow-500"></i>
+                    <i class="fas fa-star text-yellow-500"></i>
+                    <i class="fas fa-star text-yellow-500"></i>
+                    <i class="fas fa-star text-yellow-500"></i>
+                    <i class="fas fa-star text-yellow-500"></i>
+                </div>
+                <p class="text-sm italic" data-lang="en">"Outstanding work ethic and attention to detail. Their code is clean, well-documented, and maintainable. Would definitely work together again."</p>
+                <p class="text-sm italic hidden" data-lang="tr">"Olağanüstü çalışma ahlakı ve detaylara dikkat. Kodları temiz, iyi belgelenmiş ve sürdürülebilir. Kesinlikle tekrar birlikte çalışırım."</p>
+            </div>
+
+            <div class="bg-white bg-opacity-30 p-5 rounded-xl">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center">
+                        <i class="fas fa-user text-white"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">Emily Johnson</h4>
+                        <p class="text-xs text-gray-600" data-lang="en">Product Owner</p>
+                        <p class="text-xs text-gray-600 hidden" data-lang="tr">Ürün Sahibi</p>
+                    </div>
+                </div>
+                <div class="flex gap-1 mb-3">
+                    <i class="fas fa-star text-yellow-500"></i>
+                    <i class="fas fa-star text-yellow-500"></i>
+                    <i class="fas fa-star text-yellow-500"></i>
+                    <i class="fas fa-star text-yellow-500"></i>
+                    <i class="fas fa-star text-yellow-500"></i>
+                </div>
+                <p class="text-sm italic" data-lang="en">"Highly skilled in both frontend and backend. Excellent at translating business requirements into technical solutions. A valuable team member."</p>
+                <p class="text-sm italic hidden" data-lang="tr">"Hem frontend hem de backend konusunda son derece yetenekli. İş gereksinimlerini teknik çözümlere çevirmede mükemmel. Değerli bir takım üyesi."</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="blog" class="mt-6 sm:mt-8 p-4 sm:p-6 bg-white bg-opacity-15 rounded-xl backdrop-blur-sm">
+        <h3 class="text-xl sm:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500 mb-4 sm:mb-6 text-center">
+            <span data-lang="en">Latest Articles & Blog</span>
+            <span class="hidden" data-lang="tr">Son Yazılar & Blog</span>
+        </h3>
+        <div class="grid grid-cols-1 gap-4 sm:gap-5 mb-6">
+            <div class="blog-card bg-white bg-opacity-30 p-4 sm:p-5 rounded-xl hover:shadow-xl transition-all duration-300">
+                <div class="mb-3">
+                    <img src="https://placehold.co/400x200" alt="Blog Cover" class="w-full h-40 object-cover rounded-lg" loading="lazy">
+                </div>
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-xs font-semibold">Web Development</span>
+                    <span class="text-xs text-gray-500">5 min read</span>
+                </div>
+                <h4 class="font-bold text-lg mb-2" data-lang="en">Modern Web Development Best Practices</h4>
+                <h4 class="font-bold text-lg mb-2 hidden" data-lang="tr">Modern Web Geliştirme En İyi Uygulamaları</h4>
+                <p class="text-xs text-gray-600 mb-3">
+                    <i class="fas fa-calendar-alt mr-1"></i>January 4, 2026
+                </p>
+                <p class="text-sm mb-4" data-lang="en">Exploring the latest trends and best practices in modern web development including performance optimization, accessibility, and modern JavaScript frameworks...</p>
+                <p class="text-sm mb-4 hidden" data-lang="tr">Performans optimizasyonu, erişilebilirlik ve modern JavaScript framework'leri dahil olmak üzere modern web geliştirmede son trendler ve en iyi uygulamaları keşfetmek...</p>
+                <a href="#" class="inline-flex items-center gap-2 text-blue-600 hover:text-pink-600 font-medium text-sm group">
+                    <span data-lang="en">Read Full Article</span>
+                    <span class="hidden" data-lang="tr">Makaleyi Oku</span>
+                    <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </div>
+
+            <div class="blog-card bg-white bg-opacity-30 p-4 sm:p-5 rounded-xl hover:shadow-xl transition-all duration-300">
+                <div class="mb-3">
+                    <img src="https://placehold.co/400x200" alt="Blog Cover" class="w-full h-40 object-cover rounded-lg" loading="lazy">
+                </div>
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="px-3 py-1 bg-pink-100 text-pink-600 rounded-full text-xs font-semibold">Backend</span>
+                    <span class="text-xs text-gray-500">8 min read</span>
+                </div>
+                <h4 class="font-bold text-lg mb-2" data-lang="en">Database Design Principles</h4>
+                <h4 class="font-bold text-lg mb-2 hidden" data-lang="tr">Veritabanı Tasarım İlkeleri</h4>
+                <p class="text-xs text-gray-600 mb-3">
+                    <i class="fas fa-calendar-alt mr-1"></i>January 1, 2026
+                </p>
+                <p class="text-sm mb-4" data-lang="en">Understanding the fundamentals of efficient database design and optimization. Learn about normalization, indexing strategies, and query performance...</p>
+                <p class="text-sm mb-4 hidden" data-lang="tr">Verimli veritabanı tasarımı ve optimizasyonun temellerini anlamak. Normalizasyon, indeksleme stratejileri ve sorgu performansı hakkında bilgi edinin...</p>
+                <a href="#" class="inline-flex items-center gap-2 text-blue-600 hover:text-pink-600 font-medium text-sm group">
+                    <span data-lang="en">Read Full Article</span>
+                    <span class="hidden" data-lang="tr">Makaleyi Oku</span>
+                    <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </div>
+
+            <div class="blog-card bg-white bg-opacity-30 p-4 sm:p-5 rounded-xl hover:shadow-xl transition-all duration-300">
+                <div class="mb-3">
+                    <img src="https://placehold.co/400x200" alt="Blog Cover" class="w-full h-40 object-cover rounded-lg" loading="lazy">
+                </div>
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-xs font-semibold">API</span>
+                    <span class="text-xs text-gray-500">6 min read</span>
+                </div>
+                <h4 class="font-bold text-lg mb-2" data-lang="en">Building RESTful APIs with Node.js</h4>
+                <h4 class="font-bold text-lg mb-2 hidden" data-lang="tr">Node.js ile RESTful API Geliştirme</h4>
+                <p class="text-xs text-gray-600 mb-3">
+                    <i class="fas fa-calendar-alt mr-1"></i>December 28, 2025
+                </p>
+                <p class="text-sm mb-4" data-lang="en">A comprehensive guide to creating scalable and maintainable RESTful APIs using Node.js and Express. Includes authentication, error handling, and more...</p>
+                <p class="text-sm mb-4 hidden" data-lang="tr">Node.js ve Express kullanarak ölçeklenebilir ve sürdürülebilir RESTful API'ler oluşturmaya yönelik kapsamlı bir rehber. Kimlik doğrulama, hata işleme ve daha fazlasını içerir...</p>
+                <a href="#" class="inline-flex items-center gap-2 text-blue-600 hover:text-pink-600 font-medium text-sm group">
+                    <span data-lang="en">Read Full Article</span>
+                    <span class="hidden" data-lang="tr">Makaleyi Oku</span>
+                    <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </div>
+
+            <div class="blog-card bg-white bg-opacity-30 p-4 sm:p-5 rounded-xl hover:shadow-xl transition-all duration-300">
+                <div class="mb-3">
+                    <img src="https://placehold.co/400x200" alt="Blog Cover" class="w-full h-40 object-cover rounded-lg" loading="lazy">
+                </div>
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-xs font-semibold">Security</span>
+                    <span class="text-xs text-gray-500">7 min read</span>
+                </div>
+                <h4 class="font-bold text-lg mb-2" data-lang="en">Web Application Security Essentials</h4>
+                <h4 class="font-bold text-lg mb-2 hidden" data-lang="tr">Web Uygulama Güvenliği Temelleri</h4>
+                <p class="text-xs text-gray-600 mb-3">
+                    <i class="fas fa-calendar-alt mr-1"></i>December 25, 2025
+                </p>
+                <p class="text-sm mb-4" data-lang="en">Learn about common security vulnerabilities in web applications and how to protect against them. Topics include XSS, CSRF, SQL injection, and more...</p>
+                <p class="text-sm mb-4 hidden" data-lang="tr">Web uygulamalarındaki yaygın güvenlik açıkları ve bunlara karşı nasıl korunulacağı hakkında bilgi edinin. XSS, CSRF, SQL injection ve daha fazlası...</p>
+                <a href="#" class="inline-flex items-center gap-2 text-blue-600 hover:text-pink-600 font-medium text-sm group">
+                    <span data-lang="en">Read Full Article</span>
+                    <span class="hidden" data-lang="tr">Makaleyi Oku</span>
+                    <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </div>
+        </div>
+        <div class="text-center">
+            <a href="#" class="inline-block px-6 py-3 bg-gradient-to-r from-blue-500 to-pink-500 text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+                <span data-lang="en">View All Articles</span>
+                <span class="hidden" data-lang="tr">Tüm Yazıları Gör</span>
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+    </div>
+</main>
+
+<div id="bottomNav" class="fixed bottom-0 left-0 right-0 bg-white bg-opacity-95 backdrop-blur-md shadow-2xl z-50 md:hidden border-t border-gray-200">
+    <div class="flex justify-around items-center py-3">
+        <a href="#" class="bottom-nav-item flex flex-col items-center gap-1 px-4 py-2 transition-all duration-300 active">
+            <i class="fas fa-home text-xl"></i>
+            <span class="text-xs font-medium" data-lang="en">Home</span>
+            <span class="text-xs font-medium hidden" data-lang="tr">Ana Sayfa</span>
+        </a>
+        <a href="#projects" class="bottom-nav-item flex flex-col items-center gap-1 px-4 py-2 transition-all duration-300">
+            <i class="fas fa-folder text-xl"></i>
+            <span class="text-xs font-medium" data-lang="en">Projects</span>
+            <span class="text-xs font-medium hidden" data-lang="tr">Projeler</span>
+        </a>
+        <a href="#blog" class="bottom-nav-item flex flex-col items-center gap-1 px-4 py-2 transition-all duration-300">
+            <i class="fas fa-blog text-xl"></i>
+            <span class="text-xs font-medium" data-lang="en">Blog</span>
+            <span class="text-xs font-medium hidden" data-lang="tr">Blog</span>
+        </a>
+        <a href="#contact" class="bottom-nav-item flex flex-col items-center gap-1 px-4 py-2 transition-all duration-300">
+            <i class="fas fa-envelope text-xl"></i>
+            <span class="text-xs font-medium" data-lang="en">Contact</span>
+            <span class="text-xs font-medium hidden" data-lang="tr">İletişim</span>
+        </a>
+    </div>
+</div>
+
+<footer id="contact" class="bg-white bg-opacity-90 w-full py-8 mt-10 mb-16 md:mb-0 shadow-lg relative z-10">
+    <div class="container mx-auto px-4 md:px-8 lg:px-16">
+        <h2 class="text-lg font-semibold text-center">
+            <span data-lang="en">Get In Touch</span>
+            <span class="hidden" data-lang="tr">İletişime Geçin</span>
+        </h2>
+        <p class="text-sm text-center text-gray-600 mt-3 mb-6" data-lang="en">Feel free to reach out to me through my social media or email for collaborations and inquiries.</p>
+        <p class="text-sm text-center text-gray-600 mt-3 mb-6 hidden" data-lang="tr">İşbirlikleri ve sorularınız için sosyal medya veya email üzerinden benimle iletişime geçebilirsiniz.</p>
+
+        <form id="contactForm" class="max-w-xl mx-auto space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <input type="text" placeholder="Your Name" data-placeholder-en="Your Name" data-placeholder-tr="Adınız" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-blue-500 focus:outline-none transition-colors" required>
+                <input type="email" placeholder="Your Email" data-placeholder-en="Your Email" data-placeholder-tr="Email Adresiniz" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-blue-500 focus:outline-none transition-colors" required>
+            </div>
+            <input type="text" placeholder="Subject" data-placeholder-en="Subject" data-placeholder-tr="Konu" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-blue-500 focus:outline-none transition-colors" required>
+            <textarea placeholder="Your Message" data-placeholder-en="Your Message" data-placeholder-tr="Mesajınız" rows="4" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-blue-500 focus:outline-none transition-colors resize-none" required></textarea>
+            <button type="submit" class="w-full bg-gradient-to-r from-blue-500 to-pink-500 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+                <span data-lang="en">Send Message</span>
+                <span class="hidden" data-lang="tr">Mesaj Gönder</span>
+            </button>
+        </form>
+
+        <div class="text-center mt-8">
+            <a href="mailto:iletisim@laex.com.tr" class="text-blue-600 hover:text-pink-600 transition-colors duration-300 font-medium">iletisim@laex.com.tr</a>
+        </div>
+        <div class="mt-6 pt-4 border-t border-gray-300 text-center text-xs text-gray-500">
+            <p>2024 - 2026 Laexify. <span data-lang="en">All rights reserved.</span><span class="hidden" data-lang="tr">Tüm hakları saklıdır.</span></p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    let currentLang = 'en';
+    let currentTheme = 'light';
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const main = document.querySelector('main');
+        const techIcons = document.querySelectorAll('.tech-icon');
+        const themeToggle = document.getElementById('themeToggle');
+        const langToggle = document.getElementById('langToggle');
+        const html = document.documentElement;
+        const contactForm = document.getElementById('contactForm');
+        const hamburgerToggle = document.getElementById('hamburgerToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuContent = mobileMenu?.querySelector('.mobile-menu-content');
+        const bottomNavItems = document.querySelectorAll('.bottom-nav-item');
+        const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        const savedLang = localStorage.getItem('lang') || 'en';
+        currentTheme = savedTheme;
+        currentLang = savedLang;
+        html.setAttribute('data-theme', savedTheme);
+        themeToggle.querySelector('i').className = savedTheme === 'dark' ? 'fas fa-sun text-xl' : 'fas fa-moon text-xl';
+        switchLanguage(savedLang);
+
+        setTimeout(() => {
+            main.classList.add('fade-in');
+        }, 100);
+
+        techIcons.forEach((icon, index) => {
+            setTimeout(() => {
+                icon.style.opacity = '0';
+                icon.style.transform = 'scale(0.5)';
+                icon.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+
+                setTimeout(() => {
+                    icon.style.opacity = '1';
+                    icon.style.transform = 'scale(1)';
+                }, 50);
+            }, index * 50);
+        });
+
+        const statBoxes = document.querySelectorAll('.stat-box');
+        const observerOptions = {
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = entry.target.querySelector('[data-target]');
+                    const finalValue = parseInt(target.getAttribute('data-target'));
+                    animateCounter(target, finalValue);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        statBoxes.forEach(box => observer.observe(box));
+
+        themeToggle.addEventListener('click', () => {
+            const icon = themeToggle.querySelector('i');
+
+            icon.style.transform = 'rotate(360deg) scale(0)';
+            icon.style.transition = 'transform 0.3s ease';
+
+            setTimeout(() => {
+                currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+                html.setAttribute('data-theme', currentTheme);
+                localStorage.setItem('theme', currentTheme);
+                icon.className = currentTheme === 'dark' ? 'fas fa-sun text-xl' : 'fas fa-moon text-xl';
+
+                if (typeof updateRadarChart === 'function') {
+                    updateRadarChart();
+                }
+
+                icon.style.transform = 'rotate(0deg) scale(1)';
+            }, 150);
+
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'theme_change', {
+                    event_category: 'engagement',
+                    event_label: currentTheme
+                });
+            }
+        });
+
+        langToggle.addEventListener('click', () => {
+            currentLang = currentLang === 'en' ? 'tr' : 'en';
+            switchLanguage(currentLang);
+            localStorage.setItem('lang', currentLang);
+
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'language_change', {
+                    event_category: 'engagement',
+                    event_label: currentLang
+                });
+            }
+        });
+
+        setupFilterButtons();
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'form_submission', {
+                    event_category: 'engagement',
+                    event_label: 'Contact Form'
+                });
+            }
+
+            alert(currentLang === 'en' ? 'Message sent successfully!' : 'Mesaj başarıyla gönderildi!');
+            contactForm.reset();
+        });
+
+        if (hamburgerToggle && mobileMenu) {
+            hamburgerToggle.addEventListener('click', () => {
+                const isOpen = !mobileMenu.classList.contains('hidden');
+
+                if (isOpen) {
+                    mobileMenuContent.style.transform = 'translateX(-100%)';
+                    setTimeout(() => {
+                        mobileMenu.classList.add('hidden');
+                    }, 300);
+                    hamburgerToggle.classList.remove('active');
+                } else {
+                    mobileMenu.classList.remove('hidden');
+                    setTimeout(() => {
+                        mobileMenuContent.style.transform = 'translateX(0)';
+                    }, 10);
+                    hamburgerToggle.classList.add('active');
+                }
+            });
+
+            mobileMenu.addEventListener('click', (e) => {
+                if (e.target === mobileMenu) {
+                    mobileMenuContent.style.transform = 'translateX(-100%)';
+                    setTimeout(() => {
+                        mobileMenu.classList.add('hidden');
+                    }, 300);
+                    hamburgerToggle.classList.remove('active');
+                }
+            });
+
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenuContent.style.transform = 'translateX(-100%)';
+                    setTimeout(() => {
+                        mobileMenu.classList.add('hidden');
+                    }, 300);
+                    hamburgerToggle.classList.remove('active');
+                });
+            });
+        }
+
+        bottomNavItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                bottomNavItems.forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+            });
+        });
+
+        let touchStartX = 0;
+        let touchEndX = 0;
+        let touchStartY = 0;
+        let touchEndY = 0;
+
+        document.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            touchStartY = e.changedTouches[0].screenY;
+        });
+
+        document.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            touchEndY = e.changedTouches[0].screenY;
+            handleGesture();
+        });
+
+        function handleGesture() {
+            const diffX = touchEndX - touchStartX;
+            const diffY = touchEndY - touchStartY;
+
+            if (Math.abs(diffX) > Math.abs(diffY)) {
+                if (Math.abs(diffX) > 100) {
+                    if (diffX > 0) {
+                        if (window.innerWidth < 768 && mobileMenu.classList.contains('hidden')) {
+                            hamburgerToggle.click();
+                        }
+                    } else {
+                        if (window.innerWidth < 768 && !mobileMenu.classList.contains('hidden')) {
+                            hamburgerToggle.click();
+                        }
+                    }
+                }
+            } else {
+                if (Math.abs(diffY) > 150) {
+                    if (diffY < 0) {
+                        window.scrollBy({ top: 300, behavior: 'smooth' });
+                    } else {
+                        window.scrollBy({ top: -300, behavior: 'smooth' });
+                    }
+                }
+            }
+        }
+    });
+
+    function animateCounter(element, target) {
+        let current = 0;
+        const increment = target / 50;
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                element.textContent = target;
+                clearInterval(timer);
+            } else {
+                element.textContent = Math.floor(current);
+            }
+        }, 30);
+    }
+
+    function switchLanguage(lang) {
+        currentLang = lang;
+        document.querySelectorAll('[data-lang]').forEach(el => {
+            el.classList.toggle('hidden', el.getAttribute('data-lang') !== lang);
+        });
+
+        document.querySelectorAll('[data-placeholder-en]').forEach(el => {
+            el.placeholder = lang === 'en' ? el.getAttribute('data-placeholder-en') : el.getAttribute('data-placeholder-tr');
+        });
+
+        document.getElementById('langToggle').textContent = lang.toUpperCase();
+        document.documentElement.setAttribute('lang', lang);
+    }
+
+    function setupFilterButtons() {
+        const filterBtns = document.querySelectorAll('.project-filter-btn');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+                const projects = document.querySelectorAll('.project-card');
+
+                projects.forEach(project => {
+                    if (filter === 'all' || project.getAttribute('data-language') === filter) {
+                        project.style.display = 'block';
+                    } else {
+                        project.style.display = 'none';
+                    }
+                });
+            });
+        });
+    }
+
+    async function loadGitHubProjects() {
+        const container = document.getElementById('projectsContainer');
+        const username = '<?php echo htmlspecialchars($githubUsername); ?>';
+
+        try {
+            const response = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=6`);
+            const repos = await response.json();
+
+            if (repos.message === 'Not Found') {
+                throw new Error('User not found');
+            }
+
+            const languageColors = {
+                'JavaScript': 'bg-yellow-700',
+                'TypeScript': 'bg-blue-700',
+                'Python': 'bg-blue-700',
+                'HTML': 'bg-orange-700',
+                'CSS': 'bg-purple-700',
+                'PHP': 'bg-indigo-700',
+                'Java': 'bg-red-700',
+                'C++': 'bg-pink-700',
+                'Go': 'bg-cyan-700',
+                'Rust': 'bg-orange-800'
+            };
+
+            container.innerHTML = repos.slice(0, 6).map(repo => `
+                    <div class="project-card bg-white bg-opacity-30 p-5 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300" data-language="${repo.language || 'Other'}">
+                        <div class="flex items-center justify-between mb-3">
+                            <h4 class="font-bold text-lg">${repo.name}</h4>
+                            ${repo.language ? `<span class="text-xs ${languageColors[repo.language] || 'bg-gray-500'} text-white px-2 py-1 rounded-full">${repo.language}</span>` : ''}
+                        </div>
+                        <p class="text-sm mb-3 line-clamp-2">${repo.description || (currentLang === 'en' ? 'No description available.' : 'Açıklama mevcut değil.')}</p>
+                        <div class="flex items-center gap-4 mb-3 text-xs text-gray-600">
+                            <span class="flex items-center gap-1">
+                                <i class="fas fa-star text-yellow-500"></i>
+                                ${repo.stargazers_count}
+                            </span>
+                            <span class="flex items-center gap-1">
+                                <i class="fas fa-code-branch text-blue-500"></i>
+                                ${repo.forks_count}
+                            </span>
+                        </div>
+                        <div class="flex gap-2">
+                            <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer" class="text-blue-700 hover:text-pink-600 text-sm font-medium flex items-center gap-1" aria-label="View ${repo.name} source code on GitHub">
+                                <i class="fab fa-github"></i>
+                                <span data-lang="en">View Code</span>
+                                <span class="hidden" data-lang="tr">Kodu Gör</span>
+                            </a>
+                            ${repo.homepage ? `
+                                <a href="${repo.homepage}" target="_blank" rel="noopener noreferrer" class="text-green-700 hover:text-pink-600 text-sm font-medium flex items-center gap-1" aria-label="View ${repo.name} live demo">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    <span data-lang="en">Live Demo</span>
+                                    <span class="hidden" data-lang="tr">Canlı Demo</span>
+                                </a>
+                            ` : ''}
+                        </div>
+                    </div>
+                `).join('');
+
+            // Dinamik dil filtrelerini oluştur
+            const languages = [...new Set(repos.map(repo => repo.language).filter(lang => lang))];
+            const filterContainer = document.getElementById('filterButtons');
+
+            // Tüm butonu koru, diğer dil butonlarını ekle
+            const allButton = filterContainer.querySelector('[data-filter="all"]');
+            filterContainer.innerHTML = '';
+            filterContainer.appendChild(allButton);
+
+            languages.forEach(lang => {
+                const btn = document.createElement('button');
+                btn.className = 'project-filter-btn px-4 py-2 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg';
+                btn.setAttribute('data-filter', lang);
+                btn.textContent = lang;
+                filterContainer.appendChild(btn);
+            });
+
+            // Filtre butonlarına event listener ekle
+            setupFilterButtons();
+
+            switchLanguage(currentLang);
+        } catch (error) {
+            container.innerHTML = `
+                    <div class="col-span-full text-center py-8">
+                        <i class="fas fa-exclamation-triangle text-4xl text-red-500 mb-3"></i>
+                        <p class="text-gray-600" data-lang="en">Unable to load projects. Please try again later.</p>
+                        <p class="text-gray-600 hidden" data-lang="tr">Projeler yüklenemiyor. Lütfen daha sonra tekrar deneyin.</p>
+                    </div>
+                `;
+            switchLanguage(currentLang);
+        }
+    }
+
+    async function loadGitHubActivity() {
+        const container = document.getElementById('activityContainer');
+        const username = '<?php echo htmlspecialchars($githubUsername); ?>';
+
+        try {
+            const response = await fetch(`https://api.github.com/users/${username}/events/public?per_page=5`);
+            const events = await response.json();
+
+            if (events.message === 'Not Found') {
+                throw new Error('User not found');
+            }
+
+            const activityTypes = {
+                PushEvent: { icon: 'fa-code-commit', color: 'text-blue-500', en: 'Pushed to', tr: 'Push yaptı' },
+                CreateEvent: { icon: 'fa-plus-circle', color: 'text-green-500', en: 'Created', tr: 'Oluşturdu' },
+                WatchEvent: { icon: 'fa-star', color: 'text-yellow-500', en: 'Starred', tr: 'Yıldızladı' },
+                ForkEvent: { icon: 'fa-code-branch', color: 'text-purple-500', en: 'Forked', tr: 'Fork\'ladı' },
+                IssuesEvent: { icon: 'fa-circle-exclamation', color: 'text-red-500', en: 'Opened issue in', tr: 'Issue açtı' },
+                PullRequestEvent: { icon: 'fa-code-pull-request', color: 'text-indigo-500', en: 'Pull request in', tr: 'PR açtı' }
+            };
+
+            container.innerHTML = events.slice(0, 5).map(event => {
+                const activity = activityTypes[event.type] || { icon: 'fa-circle', color: 'text-gray-500', en: 'Activity in', tr: 'Aktivite', de: 'Aktivität in', es: 'Actividad en' };
+                const timeAgo = getTimeAgo(new Date(event.created_at));
+
+                return `
+                        <div class="bg-white bg-opacity-30 p-4 rounded-xl hover:shadow-lg transition-all duration-300">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-pink-500 flex items-center justify-center flex-shrink-0">
+                                    <i class="fas ${activity.icon} text-white"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-sm font-semibold mb-1">
+                                        <span data-lang="en">${activity.en}</span>
+                                        <span class="hidden" data-lang="tr">${activity.tr}</span>
+                                        <a href="https://github.com/${event.repo.name}" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-pink-600">${event.repo.name}</a>
+                                    </p>
+                                    <p class="text-xs text-gray-500">${timeAgo}</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+            }).join('');
+
+            switchLanguage(currentLang);
+        } catch (error) {
+            container.innerHTML = `
+                    <div class="text-center py-8">
+                        <i class="fas fa-exclamation-triangle text-4xl text-red-500 mb-3"></i>
+                        <p class="text-gray-600" data-lang="en">Unable to load activity. Please try again later.</p>
+                        <p class="text-gray-600 hidden" data-lang="tr">Aktiviteler yüklenemiyor. Lütfen daha sonra tekrar deneyin.</p>
+                    </div>
+                `;
+            switchLanguage(currentLang);
+        }
+    }
+
+    function getTimeAgo(date) {
+        const seconds = Math.floor((new Date() - date) / 1000);
+        const intervals = {
+            year: 31536000,
+            month: 2592000,
+            week: 604800,
+            day: 86400,
+            hour: 3600,
+            minute: 60
+        };
+
+        for (let [unit, secondsInUnit] of Object.entries(intervals)) {
+            const interval = Math.floor(seconds / secondsInUnit);
+            if (interval >= 1) {
+                return `${interval} ${unit}${interval !== 1 ? 's' : ''} ago`;
+            }
+        }
+        return 'Just now';
+    }
+
+    async function loadGitHubStats() {
+        const username = '<?php echo htmlspecialchars($githubUsername); ?>';
+        const statsContainer = document.getElementById('githubStatsContainer');
+        const languageContainer = document.getElementById('languageStatsContainer');
+
+        try {
+            const [userResponse, reposResponse] = await Promise.all([
+                fetch(`https://api.github.com/users/${username}`),
+                fetch(`https://api.github.com/users/${username}/repos?per_page=100`)
+            ]);
+
+            const userData = await userResponse.json();
+            const reposData = await reposResponse.json();
+
+            if (userData.message === 'Not Found') {
+                throw new Error('User not found');
+            }
+
+            const totalStars = reposData.reduce((acc, repo) => acc + repo.stargazers_count, 0);
+            const totalForks = reposData.reduce((acc, repo) => acc + repo.forks_count, 0);
+
+            const languages = {};
+            reposData.forEach(repo => {
+                if (repo.language) {
+                    languages[repo.language] = (languages[repo.language] || 0) + 1;
+                }
+            });
+
+            const sortedLanguages = Object.entries(languages)
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 8);
+
+            const languageColors = {
+                'JavaScript': '#f7df1e',
+                'TypeScript': '#3178c6',
+                'Python': '#3776ab',
+                'HTML': '#e34c26',
+                'CSS': '#563d7c',
+                'PHP': '#777bb4',
+                'Java': '#b07219',
+                'C++': '#f34b7d',
+                'Go': '#00add8',
+                'Rust': '#dea584',
+                'C#': '#178600',
+                'C': '#555555'
+            };
+
+            const radarLanguages = sortedLanguages.slice(0, 8);
+            const radarData = {
+                labels: radarLanguages.map(([lang]) => lang),
+                values: radarLanguages.map(([, count]) => count)
+            };
+
+            if (typeof initRadarChart === 'function') {
+                initRadarChart(radarData);
+            }
+
+            statsContainer.innerHTML = `
+                    <div class="bg-white bg-opacity-30 p-5 rounded-xl text-center">
+                        <div class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500 mb-2">${userData.public_repos}</div>
+                        <div class="text-sm font-semibold" data-lang="en">Public Repositories</div>
+                        <div class="text-sm font-semibold hidden" data-lang="tr">Açık Repo</div>
+                    </div>
+                    <div class="bg-white bg-opacity-30 p-5 rounded-xl text-center">
+                        <div class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-blue-500 mb-2">${userData.followers}</div>
+                        <div class="text-sm font-semibold" data-lang="en">Followers</div>
+                        <div class="text-sm font-semibold hidden" data-lang="tr">Takipçi</div>
+                    </div>
+                    <div class="bg-white bg-opacity-30 p-5 rounded-xl text-center">
+                        <div class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500 mb-2">${totalStars}</div>
+                        <div class="text-sm font-semibold" data-lang="en">Total Stars</div>
+                        <div class="text-sm font-semibold hidden" data-lang="tr">Toplam Yıldız</div>
+                    </div>
+                    <div class="bg-white bg-opacity-30 p-5 rounded-xl text-center">
+                        <div class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500 mb-2">${totalForks}</div>
+                        <div class="text-sm font-semibold" data-lang="en">Total Forks</div>
+                        <div class="text-sm font-semibold hidden" data-lang="tr">Toplam Fork</div>
+                    </div>
+                `;
+
+            languageContainer.innerHTML = sortedLanguages.map(([lang, count]) => {
+                const color = languageColors[lang] || '#6b7280';
+                return `
+                        <div class="bg-white bg-opacity-30 p-3 rounded-lg">
+                            <div class="flex items-center gap-2 mb-1">
+                                <div class="w-3 h-3 rounded-full" style="background-color: ${color}"></div>
+                                <span class="text-sm font-semibold">${lang}</span>
+                            </div>
+                            <div class="text-xs text-gray-600">${count} ${currentLang === 'en' ? 'repos' : 'repo'}</div>
+                        </div>
+                    `;
+            }).join('');
+
+            switchLanguage(currentLang);
+        } catch (error) {
+            statsContainer.innerHTML = `
+                    <div class="col-span-full text-center py-8">
+                        <i class="fas fa-exclamation-triangle text-4xl text-red-500 mb-3"></i>
+                        <p class="text-gray-600" data-lang="en">Unable to load GitHub statistics.</p>
+                        <p class="text-gray-600 hidden" data-lang="tr">GitHub istatistikleri yüklenemiyor.</p>
+                    </div>
+                `;
+            switchLanguage(currentLang);
+        }
+    }
+
+    let chartJsLoaded = false;
+    function loadChartJs(callback) {
+        if (chartJsLoaded) {
+            callback();
+            return;
+        }
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js';
+        script.onload = () => {
+            chartJsLoaded = true;
+            callback();
+        };
+        document.head.appendChild(script);
+    }
+
+    // Use Intersection Observer to load GitHub data only when sections are visible
+    window.addEventListener('load', () => {
+        let githubDataLoaded = false;
+
+        const loadGitHubData = () => {
+            if (githubDataLoaded) return;
+            githubDataLoaded = true;
+
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(() => {
+                    loadGitHubProjects();
+                    loadGitHubActivity();
+                    loadGitHubStats();
+                }, { timeout: 3000 });
+            } else {
+                setTimeout(() => {
+                    loadGitHubProjects();
+                    loadGitHubActivity();
+                    loadGitHubStats();
+                }, 2000);
+            }
+        };
+
+        // Load on intersection or after 5 seconds on mobile
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        loadGitHubData();
+                        observer.disconnect();
+                    }
+                });
+            }, { rootMargin: '200px' });
+
+            const projectsSection = document.getElementById('projects');
+            if (projectsSection) observer.observe(projectsSection);
+
+            // Fallback: load after 8 seconds even if not visible
+            setTimeout(loadGitHubData, 8000);
+        } else {
+            setTimeout(loadGitHubData, 3000);
+        }
+    });
+
+    let radarChart;
+    const radarCtx = document.getElementById('radarChart')?.getContext('2d');
+
+    window.initRadarChart = function(languageData) {
+        if (!radarCtx) return;
+
+        // Defer Chart.js load even more on mobile
+        const isMobile = window.innerWidth < 768;
+        const delay = isMobile ? 10000 : 0;
+
+        setTimeout(() => {
+            loadChartJs(() => {
+                const isDark = currentTheme === 'dark';
+
+                if (radarChart) {
+                    radarChart.destroy();
+                }
+
+                radarChart = new Chart(radarCtx, {
+                    type: 'radar',
+                    data: {
+                        labels: languageData.labels,
+                        datasets: [{
+                            label: 'Repository Count',
+                            data: languageData.values,
+                            fill: true,
+                            backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                            borderColor: 'rgb(59, 130, 246)',
+                            pointBackgroundColor: 'rgb(236, 72, 153)',
+                            pointBorderColor: '#fff',
+                            pointHoverBackgroundColor: '#fff',
+                            pointHoverBorderColor: 'rgb(236, 72, 153)'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        scales: {
+                            r: {
+                                beginAtZero: true,
+                                ticks: {
+                                    stepSize: 1,
+                                    color: isDark ? '#9ca3af' : '#374151'
+                                },
+                                grid: {
+                                    color: isDark ? 'rgba(156, 163, 175, 0.2)' : 'rgba(55, 65, 81, 0.2)'
+                                },
+                                pointLabels: {
+                                    color: isDark ? '#e5e7eb' : '#1f2937',
+                                    font: {
+                                        size: 12,
+                                        weight: 'bold'
+                                    }
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        }
+                    }
+                });
+            });
+        }, delay);
+    };
+
+    window.updateRadarChart = function() {
+        if (!radarChart) return;
+        const isDark = currentTheme === 'dark';
+        radarChart.options.scales.r.ticks.color = isDark ? '#9ca3af' : '#374151';
+        radarChart.options.scales.r.grid.color = isDark ? 'rgba(156, 163, 175, 0.2)' : 'rgba(55, 65, 81, 0.2)';
+        radarChart.options.scales.r.pointLabels.color = isDark ? '#e5e7eb' : '#1f2937';
+        radarChart.update();
+    };
+
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/service-worker.js')
+                .then((registration) => {
+                    console.log('SW registered:', registration.scope);
+                })
+                .catch((error) => {
+                    console.log('SW registration failed:', error);
+                });
+        });
+    }
+
+
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+
+
+        console.log('💡 PWA installation available');
+
+
+        setTimeout(() => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('✅ User accepted PWA installation');
+                    }
+                    deferredPrompt = null;
+                });
+            }
+        }, 30000);
+    });
+
+    window.addEventListener('appinstalled', () => {
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'pwa_install', {
+                event_category: 'engagement',
+                event_label: 'PWA Installation'
+            });
+        }
+    });
+
+    const cursor = document.createElement('div');
+    cursor.className = 'custom-cursor';
+    document.body.appendChild(cursor);
+
+    const cursorDot = document.createElement('div');
+    cursorDot.className = 'custom-cursor-dot';
+    document.body.appendChild(cursorDot);
+
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+
+        cursorDot.style.left = e.clientX + 'px';
+        cursorDot.style.top = e.clientY + 'px';
+    });
+
+    const hoverElements = document.querySelectorAll('a, button, .tech-icon, .social-link, .project-filter-btn');
+    hoverElements.forEach(el => {
+        el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+    });
+
+    const bgBlur = document.querySelector('.bg-blur');
+    let ticking = false;
+    let lastScrollY = 0;
+
+    if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+        window.addEventListener('scroll', () => {
+            lastScrollY = window.pageYOffset;
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    bgBlur.style.transform = `translate3d(0, ${lastScrollY * 0.5}px, 0)`;
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }, { passive: true });
+    }
+</script>
+</body>
+</html>
